@@ -1,0 +1,3 @@
+﻿  Serializer.cpp
+D:\Applications\TepLab9\TepLab9\Serializer.cpp(3,34): warning C4083:  oczekiwano "newline"; znaleziono identyfikator "f"
+  TepLab9.vcxproj -> D:\Applications\TepLab9\Debug\TepLab9.exe
