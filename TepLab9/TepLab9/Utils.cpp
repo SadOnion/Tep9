@@ -1,17 +1,5 @@
 #include "Utils.h"
 #include "CMscnProblem.h"
-double Utils::DoubleSum(int sizeI, int sizeJ,double** costFromTo,double** productFromTo)
-{
-	double sum =0;
-	for (int i = 0; i < sizeI; i++)
-	{
-		for (int j = 0; j < sizeJ; j++)
-		{
-			sum += CMscnProblem::SingleTransportCost(costFromTo,productFromTo,i,j);
-		}
-	}
-	return sum;
-}
 
 double Utils::DoubleSum(int sizeI, int sizeJ, double** costFromTo, double* income)
 {
@@ -52,6 +40,12 @@ double Utils::Sum(int size, double* arr)
 		sum+=arr[i];
 	}
 	return sum;
+}
+
+double Utils::Signum(double x)
+{
+	if(x>0) return 1;
+	else return 0;
 }
 
 

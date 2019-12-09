@@ -1,19 +1,30 @@
 ﻿#include "CMscnProblem.h"
 #include <iostream>
 #include "Serializer.h"
+#include "Matrix.h"
 int main()
 {
-	std::cout<< sizeof(CMscnProblem)<<std::endl;
+	CMscnProblem problem(2,3,3,5);
+	problem.SetCostFromFactoryTo(0,0,1);
+	problem.SetCostFromFactoryTo(0,1,1);
+	problem.SetCostFromFactoryTo(0,2,1);
+
+	problem.SetCostFromFactoryTo(1,0,1);
+	problem.SetCostFromFactoryTo(1,1,1);
+	problem.SetCostFromFactoryTo(1,2,1);
+
+	problem.SetCostFromSupplierTo(0,0,1);
+	problem.SetCostFromWarehouseTo(0,0,1);
+
+	std::cout<< problem.GetQuality(new double[30]{1,2,3,4,5,6,7,8,9,10,0,0,0,0,0,0,17,18,19,20,21,22,23,24,25,26,27,28,29,30});
+	/*
     CMscnProblem problem(2,3,3,5);
 	double supplierPowers[2] = {100,200};
 	double factoryPowers[3] = {100,200};
 	double warehousePowers[3] = {100,200};
 	double shopPowers[5] = {100,200};
 
-	problem.SetSupplierProductivePower(supplierPowers);
-	problem.SetFactoryProductivePower(factoryPowers);
-	problem.SetWarehouseProductivePower(warehousePowers);
-	problem.SetShopProductivePower(shopPowers);
+	
 
 	// S->F cost
 	problem.SetNewCostFromSupplierToFactory(100,0,0);
@@ -62,6 +73,7 @@ int main()
 	int x;
 	std::cin>>x;
 	std::cout<<std::endl<<prob.GetQuality(new double[30]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30});
+	*/
 }
 
 

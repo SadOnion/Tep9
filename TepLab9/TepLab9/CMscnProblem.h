@@ -1,31 +1,14 @@
 #pragma once
-
+#include "Supplier.h"
+#include "Shop.h"
 class CMscnProblem
 {
 	private:
-		double** costFromSupplierToFactory;
-		double** costFromFactoryToWarehouse;
-		double** costFromWarehouseToShop;
+		std::vector<Supplier*> suppliers;
+		std::vector<Supplier*> factories;
+		std::vector<Supplier*> warehouses;
 
-		double** productCountFromSupplierToFactory;
-		double** productCountFromFactoryToWarehouse;
-		double** productCountFromWarehouseToShop;
-
-		double* supplierContractCost;
-		double* factoryContractCost;
-		double* warehouseContractCost;
-
-		double* supplierMaxProductivePower;
-		double* factoryMaxProductivePower;
-		double* warehouseMaxProductivePower;
-		double* shopMaxProductivePower;
-		
-		double* incomeFromShop;
-
-		int suppliers;
-		int factories;
-		int warehouses;
-		int shops;
+		std::vector<Shop> shops;
 
 		double CalculateTransportCost();
 
@@ -33,43 +16,28 @@ class CMscnProblem
 
 		double CalculateIncomeFromShops();
 
-		double SingleIncomeFromShop(int i, int j);
-
-		double SingleTransportCostFromSupplierToFactory(int i,int j);
-		double SingleTransportCostFromFactoryToWarehouse(int i,int j);
-		double SingleTransportCostFromWarehouseToShop(int i,int j);
-
-
-
+		double CalculateContractCostFrom(std::vector<Supplier*> costToCalculate,int outputSize);
 		void BadInput();
 
 		bool AssumptionsCorrect();
 		bool ConstrainsSatisfied(double* solution);
+		void ResizeSupplierVector(std::vector<Supplier*> &vec,int size);
 public:
-	CMscnProblem();
+	~CMscnProblem();
 	CMscnProblem(int supplierSize,int factorySize,int warehouseSize,int shopSize);
 	double GetQuality(double* solution);
 
-	void SetNewCostFromSupplierToFactory(double newValue,int i,int j);
-	void SetNewCostFromFactoryToWarehouse(double newValue,int i,int j);
-	void SetNewCostFromWarehouseToShop(double newValue,int i,int j);
+	void SetSuppliersSize(int size);
+	void SetFactoriesSize(int size);
+	void SetWarehousesSize(int size);
+	void SetShopsSize(int size);
 
-	void SetNewCostFromSupplierToFactory(double** newCostArray);
-	void SetNewCostFromFactoryToWarehouse(double** newCostArray);
-	void SetNewCostFromWarehouseToShop(double** newCostArray);
+	void SetCostFromSupplierTo(int supplier,int to,double cost);
+	void SetCostFromFactoryTo(int factory,int to,double cost);
+	void SetCostFromWarehouseTo(int warehouse,int to,double cost);
 
-	void SetSupplierProductivePower(int index,double power);
-	void SetFactoryProductivePower(int index,double power);
-	void SetWarehouseProductivePower(int index,double power);
-	void SetShopProductivePower(int index,double power);
 
-	void SetSupplierProductivePower(double* powers);
-	void SetFactoryProductivePower(double* powers);
-	void SetWarehouseProductivePower(double* powers);
-	void SetShopProductivePower(double* powers);
 
-	void SetShopsIncome(double* income);
-	static double SingleTransportCost(double ** costFromTo, double ** productFromTo, int i, int j);
 };
 
 
