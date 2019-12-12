@@ -1,6 +1,10 @@
 #pragma once
 #include "Supplier.h"
 #include "Shop.h"
+#include "Solution.h"
+
+#define BAD_SOLUTION 0.34041
+
 class CMscnProblem
 {
 	private:
@@ -17,21 +21,22 @@ class CMscnProblem
 		double CalculateIncomeFromShops();
 
 		double CalculateContractCostFrom(std::vector<Supplier*> costToCalculate,int outputSize);
-		void BadInput();
+		
 
-		bool ConstrainsSatisfied(double* solution);
+		bool AssumptionsCorrect();
 		void ResizeSupplierVector(std::vector<Supplier*> &vec,int size);
+		void ApplySolution(double* solution);
 public:
-	~CMscnProblem();
+	
+	CMscnProblem(){}
 	CMscnProblem(int supplierSize,int factorySize,int warehouseSize,int shopSize);
-	double GetQuality(double* solution);
-	bool AssumptionsCorrect();
+	double GetQuality(Solution solution);
 
+	bool ConstrainsSatisfied(Solution solution);
 	void SetSuppliersSize(int size);
 	void SetFactoriesSize(int size);
 	void SetWarehousesSize(int size);
 	void SetShopsSize(int size);
-
 
 	Supplier* GetSupplier(int index){return suppliers.at(index);}
 	Supplier* GetWarehouse(int index){return warehouses.at(index);}

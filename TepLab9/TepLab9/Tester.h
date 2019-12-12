@@ -8,6 +8,7 @@ class Tester
 	FILE* file;
 public:
 	CMscnProblem LoadProblem(std::string fileName);
+	Solution LoadSolution(std::string fileName);
 	
 };
 

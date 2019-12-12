@@ -105,9 +105,17 @@ bool CMscnProblem::AssumptionsCorrect()
 	return true;
 }
 
-bool CMscnProblem::ConstrainsSatisfied(double* solution)
+bool CMscnProblem::ConstrainsSatisfied(Solution solution)
 {
-	return true;
+	
+	int expectedSize = suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
+	if(solution.GetSize() != expectedSize) return false;
+	double* tab = solution.GetSolution();
+	for (int i = 0; i < expectedSize; i++)
+	{
+		if(tab[i] < 0) return false;
+	}
+	return AssumptionsCorrect();
 }
 
 void CMscnProblem::ResizeSupplierVector(std::vector<Supplier*> &vec,int size)
@@ -122,11 +130,39 @@ void CMscnProblem::ResizeSupplierVector(std::vector<Supplier*> &vec,int size)
 	vec.resize(size);
 }
 
-
-CMscnProblem::~CMscnProblem()
+void CMscnProblem::ApplySolution(double* sol)
 {
-	// delete memory
+	int index=0;
+		for (int i = 0; i < suppliers.size(); i++)
+		{
+			for (int j = 0; j < factories.size(); j++)
+			{
+				suppliers.at(i)->SetResourceOrderedFrom(j,sol[index]);
+				index++;
+			}
+		}
+		
+		for (int i = 0; i < factories.size(); i++)
+		{
+			for (int j = 0; j < warehouses.size(); j++)
+			{
+				factories.at(i)->SetResourceOrderedFrom(j,sol[index]);
+				index++;
+			}
+		}
+		
+		for (int i = 0; i < warehouses.size(); i++)
+		{
+			for (int j = 0; j < shops.size(); j++)
+			{
+				warehouses.at(i)->SetResourceOrderedFrom(j, sol[index]);
+				index++;
+			}
+		}
 }
+
+
+
 
 CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize, int shopSize)
 {
@@ -154,39 +190,22 @@ CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize,
 	
 }
 
-double CMscnProblem::GetQuality(double* solution)
+double CMscnProblem::GetQuality(Solution solution)
 {
-	
-	if(ConstrainsSatisfied(solution))
+	bool isSolutionGood = true;
+	int expectedSize = suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
+	if(solution.GetSize() != expectedSize) isSolutionGood= false;
+	if(isSolutionGood)
 	{
-		for (int i = 0; i < suppliers.size(); i++)
-		{
-			for (int j = 0; j < factories.size(); j++)
-			{
-				suppliers.at(i)->SetResourceOrderedFrom(j,solution[i*suppliers.size()+j]);
-			}
-		}
-		int index = suppliers.size()*factories.size();
-		for (int i = 0; i < factories.size(); i++)
-		{
-			for (int j = 0; j < warehouses.size(); j++)
-			{
-				factories.at(i)->SetResourceOrderedFrom(j,solution[index+i*factories.size()+j]);
-			}
-		}
-		index = factories.size()*warehouses.size();
-		for (int i = 0; i < warehouses.size(); i++)
-		{
-			for (int j = 0; j < shops.size(); j++)
-			{
-				warehouses.at(i)->SetResourceOrderedFrom(j, solution[index +i*warehouses.size()+j]);
-			}
-		}
+		double* sol = solution.GetSolution();
 		
+		ApplySolution(sol);
+		std::cout<<"Income:"<<CalculateIncomeFromShops()<<"CC:"<<CalculateContractCost()<<"CT:"<<CalculateTransportCost()<<"\n";
 		double quality = CalculateIncomeFromShops() - CalculateContractCost() - CalculateTransportCost();
 		return quality;
 	}
-	return -9090;
+	
+	return BAD_SOLUTION;
 }
 
 void CMscnProblem::SetSuppliersSize(int size)

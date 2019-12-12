@@ -1,4 +1,5 @@
 #include "Supplier.h"
+#include <iostream>
 
 bool Supplier::CanProduceEnoughResources()
 {

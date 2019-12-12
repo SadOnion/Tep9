@@ -1,15 +1,8 @@
 #include "Tester.h"
+#include <iostream>
 #pragma warning(disable:4996)
 CMscnProblem Tester::LoadProblem(std::string fileName)
-{/*
-	char* buffer;
-	long lSize;
-	
-	fseek (file , 0 , SEEK_END);
-	lSize = ftell (file);
-	rewind (file);
-	buffer = new char[sizeof(char)*lSize];
-	fread(buffer,1,lSize,file);*/
+{
 	file = fopen(fileName.c_str(),"r");
 	int index = 0;
 	char str[10];
@@ -148,4 +141,58 @@ CMscnProblem Tester::LoadProblem(std::string fileName)
 	}
 	fclose(file);
 	return loadedProblem;
+}
+
+Solution Tester::LoadSolution(std::string fileName)
+{
+	file = fopen(fileName.c_str(),"r");
+	char str[10];
+	int inum;
+	float num;
+	int suppliersSizes[4];
+	for (int i = 0; i < 4; i++)
+	{
+		fscanf(file,"%s",str);
+		fscanf(file,"%i",&inum);
+		suppliersSizes[i] = inum;
+	}
+
+	Solution loadedSolution(suppliersSizes[0],suppliersSizes[1],suppliersSizes[2],suppliersSizes[3]);
+
+	int index=0;
+	fscanf(file,"%s",str); // xd
+	for (int i = 0; i < suppliersSizes[0]; i++)
+	{
+		for (int j = 0; j < suppliersSizes[1]; j++)
+		{
+			fscanf(file,"%f",&num);
+			loadedSolution.Set(index,num);
+			index++;
+		}
+	}
+
+	fscanf(file,"%s",str); // xf
+	for (int i = 0; i < suppliersSizes[1]; i++)
+	{
+		for (int j = 0; j < suppliersSizes[2]; j++)
+		{
+			fscanf(file,"%f",&num);
+			loadedSolution.Set(index,num);
+			index++;
+		}
+	}
+
+	fscanf(file,"%s",str); // xm
+	for (int i = 0; i < suppliersSizes[2]; i++)
+	{
+		for (int j = 0; j < suppliersSizes[3]; j++)
+		{
+			fscanf(file,"%f",&num);
+			loadedSolution.Set(index,num);
+			index++;
+		}
+	}
+
+	fclose(file);
+	return loadedSolution;
 }

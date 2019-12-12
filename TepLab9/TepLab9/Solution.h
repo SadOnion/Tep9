@@ -9,5 +9,6 @@ public:
 	int GetSize(){return size;}
 	void Set(int index,double resourceOrdered);
 	double* const GetSolution(){return solution;}
+	void Print();
 };
 

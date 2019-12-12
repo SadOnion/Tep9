@@ -12,6 +12,7 @@ private:
 	std::vector<double> max;
 	double maxProductivePower;
 	double contractCost;
+
 public:
 	bool CanProduceEnoughResources();
 	Supplier(int outputSize);
@@ -23,6 +24,8 @@ public:
 	void SetMaxResource(int index,double maxim){min.at(index)=maxim;}
 	double GetCostTo(int index,double cost){return deliveryCost.at(index);}
 	double GetResourceOrderedFrom(int index){return amountOfResourceOrdered.at(index);}
+	double GetMin(int index){return min.at(index);}
+	double GetMax(int index){return max.at(index);}
 	double TotalTransportCost();
 	double TotalResourceOutput();
 	double GetContractCost();
