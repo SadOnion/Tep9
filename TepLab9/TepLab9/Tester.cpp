@@ -1,5 +1,6 @@
 #include "Tester.h"
 #include <iostream>
+#include <time.h>
 #pragma warning(disable:4996)
 CMscnProblem Tester::LoadProblem(std::string fileName)
 {
@@ -195,4 +196,188 @@ Solution Tester::LoadSolution(std::string fileName)
 
 	fclose(file);
 	return loadedSolution;
+}
+
+void Tester::CreateRandomTest()
+{
+	srand (time(NULL));
+	file = fopen("RandomTest.txt","w");
+	char sups[4] ={'D','F','M','S'};
+	int sizes[4];
+	fprintf(file,"RandomTest: \nPlik problemu: \n");
+	for (int i = 0; i < 4; i++)
+	{
+		int random = rand() % 5 + 1;
+		sizes[i]=random;
+		fprintf(file,"%c",sups[i]);
+		fprintf(file," ");
+		fprintf(file,"%i",random);
+		fprintf(file,"\n");
+	}
+	
+	
+	// Powers
+	fprintf(file,"%s","sd \n"); // sd
+	for (int i = 0; i < sizes[0]; i++)
+	{
+		int random = rand() % 100 + 1;
+		fprintf(file,"%i ",random);
+	}
+	
+	fprintf(file,"%s","\nsf \n"); // sf
+	for (int i = 0; i < sizes[1]; i++)
+	{
+		int random = rand() % 100 + 1;
+		fprintf(file,"%i ",random);
+	}
+	fprintf(file,"%s","\nsm \n"); // sm
+	for (int i = 0; i < sizes[2]; i++)
+	{
+		int random = rand() % 100 + 1;
+		fprintf(file,"%i ",random);
+	}
+
+	fprintf(file,"%s","\nss \n"); // ss
+	for (int i = 0; i < sizes[3]; i++)
+	{
+		int random = rand() % 100 + 1;
+		fprintf(file,"%i ",random);
+	}
+
+	//TransportCost
+	fprintf(file,"%s","\ncd \n"); // cd
+	for (int i = 0; i < sizes[0]; i++)
+	{
+		for (int j = 0; j < sizes[1]; j++)
+		{
+			int random = rand() % 50 + 1;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	fprintf(file,"%s","\ncf \n"); // cf
+	for (int i = 0; i < sizes[1]; i++)
+	{
+		for (int j = 0; j < sizes[2]; j++)
+		{
+			int random = rand() % 50 + 1;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	fprintf(file,"%s","\ncm \n"); // cm
+	for (int i = 0; i < sizes[2]; i++)
+	{
+		for (int j = 0; j < sizes[3]; j++)
+		{
+			int random = rand() % 50 + 1;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	// Contract Cost
+	fprintf(file,"%s","\nud \n"); // ud
+	for (int i = 0; i < sizes[0]; i++)
+	{
+		int random = rand() % 100 + 1;
+			fprintf(file,"%i ",random);
+	}
+
+	fprintf(file,"%s","\nuf \n"); // uf
+	for (int i = 0; i < sizes[1]; i++)
+	{
+		int random = rand() % 100 + 1;
+			fprintf(file,"%i ",random);
+	}
+
+	fprintf(file,"%s","\num \n"); // um
+	for (int i = 0; i < sizes[2]; i++)
+	{
+		int random = rand() % 100 + 1;
+			fprintf(file,"%i ",random);
+	}
+	//Income
+	fprintf(file,"%s","\np \n"); // p
+	for (int i = 0; i < sizes[3]; i++)
+	{
+		int random = rand() % 10 + 1;
+			fprintf(file,"%i ",random);
+	}
+	//minmax 
+	fprintf(file,"%s","\nxdminmax \n"); // xdminmax
+	for (int i = 0; i < sizes[0]; i++)
+	{
+		for (int j = 0; j < sizes[1]; j++)
+		{
+			int random = rand() % 1000;
+			fprintf(file,"%i ",random);
+			random = rand() % 1000;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	fprintf(file,"%s","\nxfminmax \n"); // xfminmax
+	for (int i = 0; i < sizes[1]; i++)
+	{
+		for (int j = 0; j < sizes[2]; j++)
+		{
+			int random = rand() % 1000;
+			fprintf(file,"%i ",random);
+			random = rand() % 1000;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	fprintf(file,"%s","\nxmminmax \n"); // xmminmax
+	for (int i = 0; i < sizes[2]; i++)
+	{
+		for (int j = 0; j < sizes[3]; j++)
+		{
+			int random = rand() % 1000;
+			fprintf(file,"%i ",random);
+			random = rand() % 1000;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	///...Solution
+	fprintf(file,"\n \nPlik rozwiazania: \n");
+	for (int i = 0; i < 4; i++)
+	{
+		fprintf(file,"%c",sups[i]);
+		fprintf(file," ");
+		fprintf(file,"%i",sizes[i]);
+		fprintf(file,"\n");
+	}
+	
+	fprintf(file,"xd \n"); // xd
+	for (int i = 0; i < sizes[0]; i++)
+	{
+		for (int j = 0; j < sizes[1]; j++)
+		{
+			int random = rand() % 10;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	fprintf(file,"\nxf \n"); // xf
+	for (int i = 0; i < sizes[1]; i++)
+	{
+		for (int j = 0; j < sizes[2]; j++)
+		{
+			int random = rand() % 10;
+			fprintf(file,"%i ",random);
+		}
+	}
+
+	fprintf(file,"\nxm \n"); // xm
+	for (int i = 0; i < sizes[2]; i++)
+	{
+		for (int j = 0; j < sizes[3]; j++)
+		{
+			int random = rand() % 10;
+			fprintf(file,"%i ",random);
+		}
+	}
+	fclose(file);
 }

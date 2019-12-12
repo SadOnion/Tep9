@@ -19,6 +19,7 @@ void ShowResults(Tester &test,std::string testFile,double Q,bool C)
 }
 int main()
 {
+	
 	std::cout.setf(std::ios::boolalpha);
 	std::string testFile = "TestData/baseTest";
 	Tester test;
@@ -34,8 +35,20 @@ int main()
 	
 	testFile ="TestData/CalculatedTest3";
 	ShowResults(test,testFile,245,false);
-
-
+	testFile ="TestData/ZeroTest";
+	ShowResults(test,testFile,0,true);
+	testFile ="TestData/ZeroTest1";
+	ShowResults(test,testFile,-3,false);
+	testFile ="TestData/RandomTest1";
+	ShowResults(test,testFile);
+	testFile ="TestData/RandomTest2";
+	ShowResults(test,testFile);
+	testFile ="TestData/RandomTest3";
+	ShowResults(test,testFile);
+	testFile ="TestData/RandomTest4";
+	ShowResults(test,testFile);
+	
+	test.CreateRandomTest();
 }
 
 

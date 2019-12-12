@@ -197,3 +197,307 @@ xm
 
 Quality=245
 ConstraintsSatisfied=false
+
+
+ZeroTest :
+Plik problemu:
+D 2
+F 2
+M 2
+S 2
+sd
+0 0 
+sf
+0 0
+sm
+0 0
+ss
+0 0
+cd
+0 0 0 0
+cf
+0 0 0 0
+cm
+0 0 0 0
+ud
+1
+uf
+1
+um
+1
+p
+0
+xdminmax
+0 1000 0 1000
+xfminmax
+0 1000 0 1000
+xmminmax
+0 1000 0 1000
+
+Plik rozwiązania:
+D 2
+F 2
+M 2
+S 2
+xd
+0 0 
+xf
+0 0 
+xm
+0 0
+
+Quality=0
+ConstraintsSatisfied=true
+
+
+ZeroTest1:
+Plik problemu:
+D 2
+F 2
+M 2
+S 2
+sd
+0 0 
+sf
+0 0
+sm
+0 0
+ss
+0 0
+cd
+0 0 0 0
+cf
+0 0 0 0
+cm
+0 0 0 0
+ud
+1
+uf
+1
+um
+1
+p
+0
+xdminmax
+0 1000 0 1000
+xfminmax
+0 1000 0 1000
+xmminmax
+0 1000 0 1000
+
+Plik rozwiązania:
+D 2
+F 2
+M 2
+S 2
+xd
+0 0 0 1
+xf
+1 0 0 0
+xm
+0 0 1 0
+
+Quality=-3
+ConstraintsSatisfied=false
+
+
+RandomTest1:
+Plik problemu:
+D 5
+F 3
+M 5
+S 4
+sd 
+47 72 50 99 18 
+sf 
+13 30 69 
+sm 
+19 28 52 3 69 
+ss 
+85 3 99 92 
+cd 
+7 7 49 10 44 12 42 3 36 13 24 25 14 14 33 
+cf 
+33 26 48 32 50 5 23 50 25 7 27 34 28 7 21 
+cm 
+48 48 31 6 3 22 47 24 5 41 21 2 44 37 27 1 45 29 29 15 
+ud 
+53 97 58 47 1 
+uf 
+69 39 80 
+um 
+75 52 36 7 40 
+p 
+9 7 9 9 
+xdminmax 
+245 750 310 184 951 628 226 182 333 155 706 154 522 546 362 739 873 334 649 597 38 328 596 208 242 648 933 464 37 488 
+xfminmax 
+778 142 73 570 760 575 245 139 601 132 439 796 876 754 470 871 892 226 982 807 27 219 197 331 161 295 982 564 215 76 
+xmminmax 
+52 301 241 788 449 635 956 503 367 540 108 143 383 709 650 132 913 983 171 505 827 289 268 591 493 164 748 400 244 795 219 215 29 593 394 574 837 440 459 712 
+ 
+Plik rozwiązania:
+D 5
+F 3
+M 5
+S 4
+xd 
+0 5 5 8 3 1 2 4 0 2 2 5 4 2 0 
+xf 
+0 1 2 1 8 0 6 2 7 5 3 0 1 1 2 
+xm 
+5 6 1 9 8 2 5 3 8 6 9 7 1 6 2 5 7 5 1 1 
+
+Quality=-4180
+ConstraintsSatisfied=false
+
+
+RandomTest2:
+Plik problemu:
+D 4
+F 3
+M 1
+S 5
+sd 
+75 16 68 40 
+sf 
+47 96 15 
+sm 
+3 
+ss 
+41 12 23 10 79 
+cd 
+9 19 31 9 50 49 22 1 20 7 16 1 
+cf 
+41 38 45 
+cm 
+47 4 38 22 41 
+ud 
+92 70 56 9 
+uf 
+80 83 63 
+um 
+24 
+p 
+1 5 9 2 4 
+xdminmax 
+510 987 406 607 64 159 314 14 120 207 277 929 509 779 691 540 148 200 361 88 184 592 627 448 
+xfminmax 
+323 284 384 914 52 256 
+xmminmax 
+219 42 506 694 395 116 88 557 789 113 
+
+Plik rozwiązania:
+D 4
+F 3
+M 1
+S 5
+xd 
+1 2 6 9 5 0 9 0 5 1 6 4 
+xf 
+8 3 7 
+xm 
+0 8 6 2 7 
+
+Quality=-2668
+ConstraintsSatisfied=false
+
+RandomTest3:
+Plik problemu:
+D 6
+F 1
+M 1
+S 1
+sd 
+38 33 66 88 68 71 
+sf 
+33 
+sm 
+14 
+ss 
+26 
+cd 
+28 43 44 20 43 35 
+cf 
+14 
+cm 
+22 
+ud 
+70 71 16 71 61 5 
+uf 
+23 
+um 
+27 
+p 
+1 
+xdminmax 
+62 444 747 867 428 791 378 705 187 694 60 594 
+xfminmax 
+451 814 
+xmminmax 
+751 772 
+
+Plik rozwiązania:
+D 6
+F 1
+M 1
+S 1
+xd 
+5 3 4 4 2 1 
+xf 
+2 
+xm 
+5 
+
+Quality=-1123
+ConstraintsSatisfied=false
+
+RandomTest4:
+Plik problemu:
+D 6
+F 1
+M 1
+S 1
+sd 
+38 33 66 88 68 71 
+sf 
+33 
+sm 
+14 
+ss 
+26 
+cd 
+28 43 44 20 43 35 
+cf 
+14 
+cm 
+22 
+ud 
+70 71 16 71 61 5 
+uf 
+23 
+um 
+27 
+p 
+1 
+xdminmax 
+62 444 747 867 428 791 378 705 187 694 60 594 
+xfminmax 
+451 814 
+xmminmax 
+751 772 
+
+Plik rozwiązania:
+D 6
+F 1
+M 1
+S 1
+xd 
+5 3 4 4 2 1 
+xf 
+2 
+xm 
+5 
+
+Quality=-1123
+ConstraintsSatisfied=false
