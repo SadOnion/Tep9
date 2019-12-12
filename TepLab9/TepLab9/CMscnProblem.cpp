@@ -70,16 +70,18 @@ bool CMscnProblem::AssumptionsCorrect()
 	{
 		if(suppliers.at(i)->CanProduceEnoughResources() == false) return false;
 	}
-
+	
 	for (int i = 0; i < factories.size(); i++)
 	{
 		if(factories.at(i)->CanProduceEnoughResources() == false) return false;
 	}
+	
 
 	for (int i = 0; i < warehouses.size(); i++)
 	{
 		if(warehouses.at(i)->CanProduceEnoughResources() == false) return false;
 	}
+	
 
 	for (int j = 0; j < factories.size(); j++)
 	{
@@ -90,6 +92,7 @@ bool CMscnProblem::AssumptionsCorrect()
 		}
 		if(sum < factories.at(j)->TotalResourceOutput()) return false;
 	}
+	
 
 	for (int j = 0; j < warehouses.size(); j++)
 	{
@@ -101,6 +104,7 @@ bool CMscnProblem::AssumptionsCorrect()
 		
 		if(sum< warehouses.at(j)->TotalResourceOutput()) return false;
 	}
+	
 
 	return true;
 }
@@ -115,6 +119,7 @@ bool CMscnProblem::ConstrainsSatisfied(Solution solution)
 	{
 		if(tab[i] < 0) return false;
 	}
+	ApplySolution(solution.GetSolution());
 	return AssumptionsCorrect();
 }
 
@@ -197,10 +202,8 @@ double CMscnProblem::GetQuality(Solution solution)
 	if(solution.GetSize() != expectedSize) isSolutionGood= false;
 	if(isSolutionGood)
 	{
-		double* sol = solution.GetSolution();
-		
-		ApplySolution(sol);
-		std::cout<<"Income:"<<CalculateIncomeFromShops()<<"CC:"<<CalculateContractCost()<<"CT:"<<CalculateTransportCost()<<"\n";
+		ApplySolution(solution.GetSolution());
+		//std::cout<<"Income:"<<CalculateIncomeFromShops()<<"CC:"<<CalculateContractCost()<<"CT:"<<CalculateTransportCost()<<"\n";
 		double quality = CalculateIncomeFromShops() - CalculateContractCost() - CalculateTransportCost();
 		return quality;
 	}

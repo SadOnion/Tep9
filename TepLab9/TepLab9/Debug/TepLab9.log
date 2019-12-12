@@ -1,2 +1,6 @@
-﻿  Tester.cpp
+﻿  Supplier.cpp
+D:\Applications\Tep9\TepLab9\TepLab9\Supplier.cpp(20,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\Supplier.cpp(30,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  TepLab9.cpp
+  Generowanie kodu...
   TepLab9.vcxproj -> D:\Applications\Tep9\TepLab9\Debug\TepLab9.exe
