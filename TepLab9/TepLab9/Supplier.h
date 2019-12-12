@@ -13,11 +13,17 @@ private:
 public:
 	bool CanProduceEnoughResources();
 	Supplier(int outputSize);
-	double& CostTo(int i);
-	double TotalProductionCost();
+	void SetCostTo(int index,double cost){ deliveryCost.at(index) = cost;}
+	void SetResourceOrderedFrom(int index,double resource){amountOfResourceOrdered.at(index) = resource;}
+	void SetProductivePower(double power){maxProductivePower = power;}
+	void SetContractCost(double cost){contractCost = cost;}
+	double GetCostTo(int index,double cost){ return deliveryCost.at(index);}
+	double GetResourceOrderedFrom(int index){return amountOfResourceOrdered.at(index);}
+	double TotalTransportCost();
 	double TotalResourceOutput();
-	double& ResourceOrderedFrom(int i);
 	double GetContractCost();
+	double TransportCostToDestination(int j);
 	void ResizeOutput(int newSize);
+	friend class Utils;
 };
 

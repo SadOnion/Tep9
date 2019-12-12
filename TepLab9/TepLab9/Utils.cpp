@@ -48,4 +48,21 @@ double Utils::Signum(double x)
 	else return 0;
 }
 
+double Utils::Sum(std::vector<Supplier*> sup,double(Supplier::*f(int)))
+{
+	double sum=0;
+	int size = sup.size();
+	for (int i = 0; i < size; i++)
+	{
+		int deliverySize = sup.at(i)->deliveryCost.size();
+		for (int j = 0; j < deliverySize; j++)
+		{
+			sum+= sup.at(i)->*f(j);
+		}
+	}
+	return sum;
+}
+
+
+
 

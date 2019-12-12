@@ -5,18 +5,20 @@
 double CMscnProblem::CalculateTransportCost()
 {
 	double sum=0;
+	
 	for (int i = 0; i < suppliers.size(); i++)
 	{
-		sum+=suppliers.at(i)->TotalProductionCost();
+		sum+=suppliers.at(i)->TotalTransportCost();
 	}
 	for (int i = 0; i < factories.size(); i++)
 	{
-		sum+=factories.at(i)->TotalProductionCost();
+		sum+=factories.at(i)->TotalTransportCost();
 	}
 	for (int i = 0; i < warehouses.size(); i++)
 	{
-		sum+=warehouses.at(i)->TotalProductionCost();
+		sum+=warehouses.at(i)->TotalTransportCost();
 	}
+	
 	return sum;
 }
 
@@ -38,7 +40,7 @@ double CMscnProblem::CalculateIncomeFromShops()
 	{
 		for (int j = 0; j < shops.size(); j++)
 		{
-			sum+= warehouses.at(i)->ResourceOrderedFrom(j)*shops.at(j).income;
+			sum+= warehouses.at(i)->GetResourceOrderedFrom(j)*shops.at(j)->income;
 		}
 	}
 	return sum;
@@ -53,7 +55,7 @@ double CMscnProblem::CalculateContractCostFrom(std::vector<Supplier*> costToCalc
 		innerSum=0;
 		for (int j = 0; j <  outputSize; j++)
 		{
-			innerSum+= costToCalculate.at(i)->ResourceOrderedFrom(j);
+			innerSum+= costToCalculate.at(i)->GetResourceOrderedFrom(j);
 		}
 		sum+= Utils::Signum(innerSum)* costToCalculate.at(i)->GetContractCost();
 	}
@@ -81,18 +83,23 @@ bool CMscnProblem::AssumptionsCorrect()
 
 	for (int j = 0; j < factories.size(); j++)
 	{
+		double sum=0;
 		for (int i = 0; i < suppliers.size(); i++)
 		{
-			if(suppliers.at(i)->ResourceOrderedFrom(j) < factories.at(j)->TotalResourceOutput()) return false;
+			sum+=suppliers.at(i)->GetResourceOrderedFrom(j);
 		}
+		if(sum < factories.at(j)->TotalResourceOutput()) return false;
 	}
 
 	for (int j = 0; j < warehouses.size(); j++)
 	{
+		double sum=0;
 		for (int i = 0; i < factories.size(); i++)
 		{
-			if(factories.at(i)->ResourceOrderedFrom(j) < warehouses.at(j)->TotalResourceOutput()) return false;
+			sum+=factories.at(i)->GetResourceOrderedFrom(j);
 		}
+		
+		if(sum< warehouses.at(j)->TotalResourceOutput()) return false;
 	}
 
 	return true;
@@ -118,6 +125,7 @@ void CMscnProblem::ResizeSupplierVector(std::vector<Supplier*> &vec,int size)
 
 CMscnProblem::~CMscnProblem()
 {
+	// delete memory
 }
 
 CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize, int shopSize)
@@ -125,7 +133,7 @@ CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize,
 	suppliers.resize(supplierSize);
 	factories.resize(factorySize);
 	warehouses.resize(warehouseSize);
-	shops.reserve(shopSize);
+	shops.resize(shopSize);
 
 	for (int i = 0; i < supplierSize; i++)
 	{
@@ -139,8 +147,10 @@ CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize,
 	{
 		warehouses.at(i) = new Supplier(shopSize);
 	}
-
-	
+	for (int i = 0; i < shopSize; i++)
+	{
+		shops.at(i) = new Shop();
+	}
 	
 }
 
@@ -153,7 +163,7 @@ double CMscnProblem::GetQuality(double* solution)
 		{
 			for (int j = 0; j < factories.size(); j++)
 			{
-				suppliers.at(i)->ResourceOrderedFrom(j) = solution[i*suppliers.size()+j];
+				suppliers.at(i)->SetResourceOrderedFrom(j,solution[i*suppliers.size()+j]);
 			}
 		}
 		int index = suppliers.size()*factories.size();
@@ -161,7 +171,7 @@ double CMscnProblem::GetQuality(double* solution)
 		{
 			for (int j = 0; j < warehouses.size(); j++)
 			{
-				factories.at(i)->ResourceOrderedFrom(j) = solution[index+i*factories.size()+j];
+				factories.at(i)->SetResourceOrderedFrom(j,solution[index+i*factories.size()+j]);
 			}
 		}
 		index = factories.size()*warehouses.size();
@@ -169,7 +179,7 @@ double CMscnProblem::GetQuality(double* solution)
 		{
 			for (int j = 0; j < shops.size(); j++)
 			{
-				warehouses.at(i)->ResourceOrderedFrom(j) = solution[index +i*warehouses.size()+j];
+				warehouses.at(i)->SetResourceOrderedFrom(j, solution[index +i*warehouses.size()+j]);
 			}
 		}
 		
@@ -214,6 +224,7 @@ void CMscnProblem::SetFactoriesSize(int size)
 
 }
 
+
 void CMscnProblem::SetWarehousesSize(int size)
 {
 	int oldSize=warehouses.size();
@@ -240,21 +251,6 @@ void CMscnProblem::SetShopsSize(int size)
 	{
 		warehouses.at(i)->ResizeOutput(shops.size());
 	}
-}
-
-void CMscnProblem::SetCostFromSupplierTo(int supplier, int to, double cost)
-{
-	suppliers.at(supplier)->CostTo(to) = cost;
-}
-
-void CMscnProblem::SetCostFromFactoryTo(int factory, int to, double cost)
-{
-	suppliers.at(factory)->CostTo(to) = cost;
-}
-
-void CMscnProblem::SetCostFromWarehouseTo(int warehouse, int to, double cost)
-{
-	suppliers.at(warehouse)->CostTo(to) = cost;
 }
 
 

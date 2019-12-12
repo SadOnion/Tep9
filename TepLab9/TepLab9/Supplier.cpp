@@ -14,13 +14,7 @@ Supplier::Supplier(int outputSize)
 	amountOfResourceOrdered.resize(outputSize);
 }
 
-double& Supplier::CostTo(int i)
-{
-	if(i>deliveryCost.size()) return deliveryCost.at(0); //  ?
-	return deliveryCost.at(i);
-}
-
-double Supplier::TotalProductionCost()
+double Supplier::TotalTransportCost()
 {
 	double sum =0;
 	for (int i = 0;  i < deliveryCost.size();  i++)
@@ -41,14 +35,16 @@ double Supplier::TotalResourceOutput()
 }
 
 
-double& Supplier::ResourceOrderedFrom(int i)
-{
-	return amountOfResourceOrdered.at(i);
-}
+
 
 double Supplier::GetContractCost()
 {
 	return contractCost;
+}
+
+double Supplier::TransportCostToDestination(int j)
+{
+	return deliveryCost[j]*amountOfResourceOrdered[j];
 }
 
 void Supplier::ResizeOutput(int newSize)

@@ -15,65 +15,31 @@ int main()
 
 	problem.SetCostFromSupplierTo(0,0,1);
 	problem.SetCostFromWarehouseTo(0,0,1);
-
+	
 	std::cout<< problem.GetQuality(new double[30]{1,2,3,4,5,6,7,8,9,10,0,0,0,0,0,0,17,18,19,20,21,22,23,24,25,26,27,28,29,30});
-	/*
-    CMscnProblem problem(2,3,3,5);
-	double supplierPowers[2] = {100,200};
-	double factoryPowers[3] = {100,200};
-	double warehousePowers[3] = {100,200};
-	double shopPowers[5] = {100,200};
-
 	
 
-	// S->F cost
-	problem.SetNewCostFromSupplierToFactory(100,0,0);
-	problem.SetNewCostFromSupplierToFactory(200,0,1);
-	problem.SetNewCostFromSupplierToFactory(300,0,2);
-	problem.SetNewCostFromSupplierToFactory(400,1,0);
-	problem.SetNewCostFromSupplierToFactory(500,1,1);
-	problem.SetNewCostFromSupplierToFactory(200,1,2);
-	// F->W cost
-	problem.SetNewCostFromFactoryToWarehouse(300,0,0);
-	problem.SetNewCostFromFactoryToWarehouse(200,0,1);
-	problem.SetNewCostFromFactoryToWarehouse(100,0,2);
-	problem.SetNewCostFromFactoryToWarehouse(500,1,0);
-	problem.SetNewCostFromFactoryToWarehouse(200,1,1);
-	problem.SetNewCostFromFactoryToWarehouse(100,1,2);
-	problem.SetNewCostFromFactoryToWarehouse(500,2,0);
-	problem.SetNewCostFromFactoryToWarehouse(300,2,1);
-	problem.SetNewCostFromFactoryToWarehouse(200,2,2);
+	CMscnProblem fuck(1,1,1,1);
 
-	// W->S cost
-	problem.SetNewCostFromWarehouseToShop(100,0,0);
-	problem.SetNewCostFromWarehouseToShop(100,0,1);
-	problem.SetNewCostFromWarehouseToShop(100,0,2);
-	problem.SetNewCostFromWarehouseToShop(100,0,3);
-	problem.SetNewCostFromWarehouseToShop(100,0,4);
+	fuck.GetSupplier(0)->SetProductivePower(100);
+	fuck.GetSupplier(0)->SetCostTo(0,3);
+	fuck.GetSupplier(0)->SetContractCost(10);
 
-	problem.SetNewCostFromWarehouseToShop(100,1,0);
-	problem.SetNewCostFromWarehouseToShop(200,1,1);
-	problem.SetNewCostFromWarehouseToShop(500,1,2);
-	problem.SetNewCostFromWarehouseToShop(200,1,3);
-	problem.SetNewCostFromWarehouseToShop(600,1,4);
+	fuck.GetFactory(0)->SetProductivePower(50);
+	fuck.GetFactory(0)->SetCostTo(0,4);
+	fuck.GetFactory(0)->SetContractCost(10);
 
-	problem.SetNewCostFromWarehouseToShop(100,2,0);
-	problem.SetNewCostFromWarehouseToShop(200,2,1);
-	problem.SetNewCostFromWarehouseToShop(300,2,2);
-	problem.SetNewCostFromWarehouseToShop(500,2,3);
-	problem.SetNewCostFromWarehouseToShop(3000,2,4);
+	fuck.GetWarehouse(0)->SetProductivePower(10.5);
+	fuck.GetWarehouse(0)->SetCostTo(0,1);
+	fuck.GetWarehouse(0)->SetContractCost(10);
+
+	fuck.GetShop(0)->maxProductivePower = 100;
+	fuck.GetShop(0)->income = 100;
+
+	std::cout<<"\n to jest powinno byc:"<<fuck.GetQuality(new double[3]{1,1,1});
 	
-	problem.SetShopsIncome(new double[5]{1000,1000,1000,1000,100});
-	std::cout<<problem.GetQuality(new double[30]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30});
 
-	Serializer s("Data.data");
-	s.Save(problem);
 
-	CMscnProblem prob = s.Read();
-	int x;
-	std::cin>>x;
-	std::cout<<std::endl<<prob.GetQuality(new double[30]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30});
-	*/
 }
 
 

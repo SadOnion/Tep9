@@ -1,2 +1,28 @@
-﻿  TepLab9.cpp
+﻿  CMscnProblem.cpp
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(9,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(13,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(17,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(39,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(41,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(53,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(69,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(74,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(79,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(84,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(87,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(94,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(97,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(115,16): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(117,24): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(162,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(164,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(170,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(172,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(178,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(180,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(220,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(241,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(251,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  TepLab9.cpp
+  Generowanie kodu...
   TepLab9.vcxproj -> D:\Applications\Tep9\TepLab9\Debug\TepLab9.exe
