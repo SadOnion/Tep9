@@ -253,6 +253,61 @@ void CMscnProblem::SetShopsSize(int size)
 	}
 }
 
+void CMscnProblem::PrintInfo()
+{
+	std::cout<<"Suppliers:"<<suppliers.size()<<"\n"<<"Factories:"<<factories.size()<<"\n"<<"Warehouses:"<<warehouses.size()<<"\n"<<"Shops:"<<shops.size()<<"\n";
+	std::cout<<"Suppliers powers:";
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+		std::cout<<suppliers.at(i)->maxProductivePower<<"<->"<<suppliers.at(i)->contractCost<<" ";
+	}
+	std::cout<<"\n Factories powers:";
+	for (int i = 0; i < factories.size(); i++)
+	{
+		std::cout<<factories.at(i)->maxProductivePower<<"<->"<<factories.at(i)->contractCost<<" ";
+	}
+	std::cout<<"\n Warehouses powers:";
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+		std::cout<<warehouses.at(i)->maxProductivePower<<"<->"<<warehouses.at(i)->contractCost<<" ";
+	}
+	std::cout<<"\n Shops powers:";
+	for (int i = 0; i < shops.size(); i++)
+	{
+		std::cout<<shops.at(i)->maxProductivePower<<"<->"<<shops.at(i)->income<<" ";
+	}
+	std::cout<<"\n Suppliers Costs:";
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+		for (int j = 0; j < factories.size(); j++)
+		{
+			
+			std::cout<<suppliers.at(i)->deliveryCost.at(j)<<" ";
+		}
+		std::cout<<std::endl;
+	}
+	std::cout<<"\n Factories Costs:";
+	for (int i = 0; i < factories.size(); i++)
+	{
+		for (int j = 0; j < warehouses.size(); j++)
+		{
+			
+			std::cout<<factories.at(i)->deliveryCost.at(j)<<" ";
+		}
+		std::cout<<std::endl;
+	}
+	std::cout<<"\n Warehouses Costs:";
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+		for (int j = 0; j < shops.size(); j++)
+		{
+			
+			std::cout<<warehouses.at(i)->deliveryCost.at(j)<<" ";
+		}
+		std::cout<<std::endl;
+	}
+}
+
 
 
 

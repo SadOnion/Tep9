@@ -10,8 +10,7 @@ Supplier::Supplier(int outputSize)
 	maxProductivePower=DEFAULT_PRODUCTIVE_POWER;
 	contractCost=DEFAULT_CONTRACT_COST;
 
-	deliveryCost.resize(outputSize);
-	amountOfResourceOrdered.resize(outputSize);
+	ResizeOutput(outputSize);
 }
 
 double Supplier::TotalTransportCost()
@@ -51,4 +50,6 @@ void Supplier::ResizeOutput(int newSize)
 {
 	deliveryCost.resize(newSize);
 	amountOfResourceOrdered.resize(newSize);
+	min.resize(newSize);
+	max.resize(newSize);
 }

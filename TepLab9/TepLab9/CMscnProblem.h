@@ -37,7 +37,7 @@ public:
 	Supplier* GetWarehouse(int index){return warehouses.at(index);}
 	Supplier* GetFactory(int index){return factories.at(index);}
 	Shop* GetShop(int index){return shops.at(index);}
-
+	void PrintInfo();
 };
 
 

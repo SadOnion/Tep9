@@ -152,17 +152,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CMscnProblem.cpp" />
-    <ClCompile Include="Serializer.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="Solution.cpp" />
     <ClCompile Include="Supplier.cpp" />
     <ClCompile Include="TepLab9.cpp" />
+    <ClCompile Include="Tester.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMscnProblem.h" />
-    <ClInclude Include="Serializer.h" />
     <ClInclude Include="Shop.h" />
+    <ClInclude Include="Solution.h" />
     <ClInclude Include="Supplier.h" />
+    <ClInclude Include="Tester.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
