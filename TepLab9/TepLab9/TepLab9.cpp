@@ -3,6 +3,7 @@
 #include "Serializer.h"
 #include "Matrix.h"
 #include "Tester.h"
+#include "CRandom.h"
 #pragma warning(disable:4996)
 
 void ShowResults(Tester &test,std::string testFile)
@@ -47,8 +48,11 @@ int main()
 	ShowResults(test,testFile);
 	testFile ="TestData/RandomTest4";
 	ShowResults(test,testFile);
+	testFile ="TestData/Test";
+	ShowResults(test,testFile);
 	
-	test.CreateRandomTest();
+	//test.CreateRandomTest();
+
 }
 
 

@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CMscnProblem.cpp" />
+    <ClCompile Include="CRandom.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Solution.cpp" />
     <ClCompile Include="Supplier.cpp" />
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMscnProblem.h" />
+    <ClInclude Include="CRandom.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Solution.h" />
     <ClInclude Include="Supplier.h" />

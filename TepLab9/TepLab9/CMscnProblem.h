@@ -2,9 +2,10 @@
 #include "Supplier.h"
 #include "Shop.h"
 #include "Solution.h"
+#include <string>
 
 #define BAD_SOLUTION 0.34041
-
+#pragma warning(disable:4996)
 class CMscnProblem
 {
 	private:
@@ -20,7 +21,7 @@ class CMscnProblem
 
 		double CalculateIncomeFromShops();
 
-		double CalculateContractCostFrom(std::vector<Supplier*> costToCalculate,int outputSize);
+		double CalculateContractCostFrom(std::vector<Supplier*>& costToCalculate,int outputSize);
 		
 
 		bool AssumptionsCorrect();
@@ -42,6 +43,8 @@ public:
 	Supplier* GetWarehouse(int index){return warehouses.at(index);}
 	Supplier* GetFactory(int index){return factories.at(index);}
 	Shop* GetShop(int index){return shops.at(index);}
+
+	bool SaveProblem(std::string fileName);
 	void PrintInfo();
 };
 

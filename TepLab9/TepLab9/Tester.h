@@ -10,6 +10,7 @@ class Tester
 public:
 	CMscnProblem LoadProblem(std::string fileName);
 	Solution LoadSolution(std::string fileName);
+	void SaveProblem(CMscnProblem &problem);
 	void CreateRandomTest();
 };
 

@@ -198,6 +198,11 @@ Solution Tester::LoadSolution(std::string fileName)
 	return loadedSolution;
 }
 
+void Tester::SaveProblem(CMscnProblem& problem)
+{
+	
+}
+
 void Tester::CreateRandomTest()
 {
 	srand (time(NULL));

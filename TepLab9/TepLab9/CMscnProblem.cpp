@@ -46,7 +46,7 @@ double CMscnProblem::CalculateIncomeFromShops()
 	return sum;
 }
 
-double CMscnProblem::CalculateContractCostFrom(std::vector<Supplier*> costToCalculate,int outputSize)
+double CMscnProblem::CalculateContractCostFrom(std::vector<Supplier*> &costToCalculate,int outputSize)
 {
 	double sum=0;
 	double innerSum=0;
@@ -273,6 +273,139 @@ void CMscnProblem::SetShopsSize(int size)
 	{
 		warehouses.at(i)->ResizeOutput(shops.size());
 	}
+}
+
+bool CMscnProblem::SaveProblem(std::string fileName)
+{
+	std::cout<<"siema";
+	FILE* file = fopen(fileName.c_str(),"w");
+	if(file == NULL) return false;
+		fprintf(file,"%c ",'D');
+		fprintf(file,"%i",suppliers.size());
+		fprintf(file,"\n");
+
+		fprintf(file,"%c ",'F');
+		fprintf(file,"%i",factories.size());
+		fprintf(file,"\n");
+
+		fprintf(file,"%c ",'M');
+		fprintf(file,"%i",warehouses.size());
+		fprintf(file,"\n");
+
+		fprintf(file,"%c ",'S');
+		fprintf(file,"%i",shops.size());
+		fprintf(file,"\n");
+	
+	
+	
+	// Powers
+	fprintf(file,"%s","sd \n"); // sd
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+		fprintf(file,"%g ",suppliers.at(i)->maxProductivePower);
+	}
+	
+	fprintf(file,"%s","\nsf \n"); // sf
+	for (int i = 0; i < factories.size(); i++)
+	{
+		fprintf(file,"%g ",factories.at(i)->maxProductivePower);
+	}
+	fprintf(file,"%s","\nsm \n"); // sm
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+		fprintf(file,"%g ",warehouses.at(i)->maxProductivePower);
+	}
+
+	fprintf(file,"%s","\nss \n"); // ss
+	for (int i = 0; i < shops.size(); i++)
+	{
+		fprintf(file,"%g ",shops.at(i)->maxProductivePower);
+	}
+
+	//TransportCost
+	fprintf(file,"%s","\ncd \n"); // cd
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+		for (int j = 0; j < factories.size(); j++)
+		{
+			fprintf(file,"%g ",suppliers.at(i)->deliveryCost.at(j));
+		}
+	}
+
+	fprintf(file,"%s","\ncf \n"); // cf
+	for (int i = 0; i < factories.size(); i++)
+	{
+		for (int j = 0; j < warehouses.size(); j++)
+		{
+			fprintf(file,"%g ",factories.at(i)->deliveryCost.at(j));
+		}
+	}
+
+	fprintf(file,"%s","\ncm \n"); // cm
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+		for (int j = 0; j < shops.size(); j++)
+		{
+			fprintf(file,"%g ",warehouses.at(i)->deliveryCost.at(j));
+		}
+	}
+
+	// Contract Cost
+	fprintf(file,"%s","\nud \n"); // ud
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+			fprintf(file,"%g ",suppliers.at(i)->contractCost);
+	}
+
+	fprintf(file,"%s","\nuf \n"); // uf
+	for (int i = 0; i < factories.size(); i++)
+	{
+			fprintf(file,"%g ",factories.at(i)->contractCost);
+	}
+
+	fprintf(file,"%s","\num \n"); // um
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+			fprintf(file,"%g ",warehouses.at(i)->contractCost);
+	}
+	//Income
+	fprintf(file,"%s","\np \n"); // p
+	for (int i = 0; i < shops.size(); i++)
+	{
+			fprintf(file,"%g ",shops.at(i)->income);
+	}
+	//minmax 
+	fprintf(file,"%s","\nxdminmax \n"); // xdminmax
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+		for (int j = 0; j < factories.size(); j++)
+		{
+			fprintf(file,"%g ",suppliers.at(i)->min.at(j));
+			fprintf(file,"%g ",suppliers.at(i)->max.at(j));
+		}
+	}
+
+	fprintf(file,"%s","\nxfminmax \n"); // xfminmax
+	for (int i = 0; i < factories.size(); i++)
+	{
+		for (int j = 0; j < warehouses.size(); j++)
+		{
+			fprintf(file,"%g ",factories.at(i)->min.at(j));
+			fprintf(file,"%g ",factories.at(i)->max.at(j));
+		}
+	}
+
+	fprintf(file,"%s","\nxmminmax \n"); // xmminmax
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+		for (int j = 0; j < shops.size(); j++)
+		{
+			fprintf(file,"%g ",warehouses.at(i)->min.at(j));
+			fprintf(file,"%g ",warehouses.at(i)->max.at(j));
+		}
+	}
+	fclose(file);
+	return true;
 }
 
 void CMscnProblem::PrintInfo()
