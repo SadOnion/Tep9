@@ -49,8 +49,7 @@ int main()
 	testFile ="TestData/RandomTest4";
 	ShowResults(test,testFile);
 	testFile ="TestData/Test";
-	ShowResults(test,testFile);
-	
+	ShowResults(test, testFile);
 	//test.CreateRandomTest();
 
 }

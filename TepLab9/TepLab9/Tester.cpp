@@ -141,7 +141,7 @@ CMscnProblem Tester::LoadProblem(std::string fileName)
 		}
 	}
 	fclose(file);
-	return loadedProblem;
+	return std::move(loadedProblem);
 }
 
 Solution Tester::LoadSolution(std::string fileName)

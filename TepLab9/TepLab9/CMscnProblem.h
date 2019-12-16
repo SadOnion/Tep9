@@ -28,8 +28,9 @@ class CMscnProblem
 		void ResizeSupplierVector(std::vector<Supplier*> &vec,int size);
 		void ApplySolution(double* solution);
 public:
-	
+	~CMscnProblem();
 	CMscnProblem(){}
+	CMscnProblem(CMscnProblem&& other);
 	CMscnProblem(int supplierSize,int factorySize,int warehouseSize,int shopSize);
 	double GetQuality(Solution solution);
 

@@ -166,8 +166,55 @@ void CMscnProblem::ApplySolution(double* sol)
 		}
 }
 
+CMscnProblem::~CMscnProblem()
+{
+	for (int i = 0; i < suppliers.size();i++) {
+		if(suppliers.at(i)!=NULL)
+		delete suppliers.at(i);
+	}
+	for (int i = 0; i < factories.size(); i++) {
+		if(factories.at(i)!=NULL)
+
+		delete factories.at(i);
+	}
+	for (int i = 0; i < warehouses.size(); i++) {
+		if (warehouses.at(i) != NULL)
+
+		delete warehouses.at(i);
+	}
+	for (int i = 0; i < shops.size(); i++) {
+		if (shops.at(i) != NULL)
+
+		delete shops.at(i);
+	}
+}
 
 
+
+
+CMscnProblem::CMscnProblem(CMscnProblem&& other)
+{
+	suppliers = other.suppliers;
+	for (int i = 0; i < other.suppliers.size(); i++)
+	{
+		other.suppliers.at(i) = NULL;
+	}
+	factories = other.factories;
+	for (int i = 0; i < other.factories.size(); i++)
+	{
+		other.factories.at(i) = NULL;
+	}
+	warehouses = other.warehouses;
+	for (int i = 0; i < other.warehouses.size(); i++)
+	{
+		other.warehouses.at(i) = NULL;
+	}
+	shops = other.shops;
+	for (int i = 0; i < other.shops.size(); i++)
+	{
+		other.shops.at(i) = NULL;
+	}
+}
 
 CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize, int shopSize)
 {
@@ -203,7 +250,6 @@ double CMscnProblem::GetQuality(Solution solution)
 	if(isSolutionGood)
 	{
 		ApplySolution(solution.GetSolution());
-		//std::cout<<"Income:"<<CalculateIncomeFromShops()<<"CC:"<<CalculateContractCost()<<"CT:"<<CalculateTransportCost()<<"\n";
 		double quality = CalculateIncomeFromShops() - CalculateContractCost() - CalculateTransportCost();
 		return quality;
 	}
