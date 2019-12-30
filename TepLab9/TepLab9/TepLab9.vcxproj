@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClCompile Include="CMscnProblem.cpp" />
     <ClCompile Include="CRandom.cpp" />
+    <ClCompile Include="CRandomSearch.cpp" />
+    <ClCompile Include="RandomSetter.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Solution.cpp" />
     <ClCompile Include="Supplier.cpp" />
@@ -163,6 +165,8 @@
   <ItemGroup>
     <ClInclude Include="CMscnProblem.h" />
     <ClInclude Include="CRandom.h" />
+    <ClInclude Include="CRandomSearch.h" />
+    <ClInclude Include="RandomSetter.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Solution.h" />
     <ClInclude Include="Supplier.h" />

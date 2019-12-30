@@ -1,6 +1,8 @@
 #include "CMscnProblem.h"
 #include "Utils.h"
 #include <iostream>
+#include "CRandom.h"
+#include "RandomSetter.h"
 
 double CMscnProblem::CalculateTransportCost()
 {
@@ -171,6 +173,8 @@ bool CMscnProblem::ApplySolution(double* sol)
 		return minmaxCorrect;
 }
 
+
+
 CMscnProblem::~CMscnProblem()
 {
 	for (int i = 0; i < suppliers.size();i++) {
@@ -247,6 +251,31 @@ CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize,
 	
 }
 
+CMscnProblem& CMscnProblem::operator=(CMscnProblem&& other)
+{
+	suppliers = other.suppliers;
+	for (int i = 0; i < other.suppliers.size(); i++)
+	{
+		other.suppliers.at(i) = NULL;
+	}
+	factories = other.factories;
+	for (int i = 0; i < other.factories.size(); i++)
+	{
+		other.factories.at(i) = NULL;
+	}
+	warehouses = other.warehouses;
+	for (int i = 0; i < other.warehouses.size(); i++)
+	{
+		other.warehouses.at(i) = NULL;
+	}
+	shops = other.shops;
+	for (int i = 0; i < other.shops.size(); i++)
+	{
+		other.shops.at(i) = NULL;
+	}
+	return *this;
+}
+
 double CMscnProblem::GetQuality(Solution& solution)
 {
 	
@@ -261,6 +290,8 @@ double CMscnProblem::GetQuality(Solution& solution)
 	
 	return BAD_SOLUTION;
 }
+
+
 
 void CMscnProblem::SetSuppliersSize(int size)
 {
@@ -513,6 +544,54 @@ void CMscnProblem::PrintInfo()
 		}
 		std::cout<<std::endl;
 	}
+}
+
+void CMscnProblem::GenerateInstance(unsigned int seed)
+{
+	CRandom rand(seed);
+	RandomSetter setter;
+
+	setter.SetRandomPowers(suppliers, rand);
+	setter.SetRandomPowers(factories, rand);
+	setter.SetRandomPowers(warehouses, rand);
+	setter.SetRandomPowers(shops,rand);
+
+	setter.SetRandomTransportCost(suppliers, factories, rand);
+	setter.SetRandomTransportCost(factories, warehouses, rand);
+	setter.SetRandomTransportCost(warehouses, shops, rand);
+
+	setter.SetRandomCotract(suppliers, rand);
+	setter.SetRandomCotract(factories, rand);
+	setter.SetRandomCotract(warehouses, rand);
+
+	setter.SetRandomIncome(shops, rand);
+	
+	setter.SetRandomMinMax(suppliers, factories, rand);
+	setter.SetRandomMinMax(factories, warehouses, rand);
+	setter.SetRandomMinMax(warehouses, shops, rand);
+}
+void CMscnProblem::Take(CMscnProblem& other) {
+	suppliers = other.suppliers;
+	for (int i = 0; i < other.suppliers.size(); i++)
+	{
+		other.suppliers.at(i) = new Supplier(other.factories.size());
+	}
+	factories = other.factories;
+	for (int i = 0; i < other.factories.size(); i++)
+	{
+		other.factories.at(i) = new Supplier(other.warehouses.size());
+	}
+	warehouses = other.warehouses;
+	for (int i = 0; i < other.warehouses.size(); i++)
+	{
+		other.warehouses.at(i) = new Supplier(other.shops.size());
+	}
+	shops = other.shops;
+	for (int i = 0; i < other.shops.size(); i++)
+	{
+		other.shops.at(i) = new Shop();
+	}
+	
 }
 
 

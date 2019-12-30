@@ -5,9 +5,17 @@ Solution::Solution(Solution&& other)
 	solution = other.solution;
 	other.solution = NULL;
 	size = other.size;
+	suppliersSize = other.suppliersSize;
+	factoriesSize = other.factoriesSize;
+	warehousesSize = other.warehousesSize;
+	shopsSize = other.shopsSize;
 }
 Solution::Solution(int supSize, int facSize, int warSize, int shopSize)
 {
+	suppliersSize = supSize;
+	factoriesSize = facSize;
+	warehousesSize = warSize;
+	shopsSize= shopSize;
 	size = supSize*facSize+facSize*warSize+warSize*shopSize;
 	solution = new double[size];
 }
