@@ -26,15 +26,15 @@ class CMscnProblem
 
 		bool AssumptionsCorrect();
 		void ResizeSupplierVector(std::vector<Supplier*> &vec,int size);
-		void ApplySolution(double* solution);
+		bool ApplySolution(double* solution);
 public:
 	~CMscnProblem();
 	CMscnProblem(){}
 	CMscnProblem(CMscnProblem&& other);
 	CMscnProblem(int supplierSize,int factorySize,int warehouseSize,int shopSize);
-	double GetQuality(Solution solution);
+	double GetQuality(Solution& solution);
 
-	bool ConstrainsSatisfied(Solution solution);
+	bool ConstrainsSatisfied(Solution& solution);
 	void SetSuppliersSize(int size);
 	void SetFactoriesSize(int size);
 	void SetWarehousesSize(int size);

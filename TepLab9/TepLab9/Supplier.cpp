@@ -34,9 +34,6 @@ double Supplier::TotalResourceOutput()
 	return sum;
 }
 
-
-
-
 double Supplier::GetContractCost()
 {
 	return contractCost;

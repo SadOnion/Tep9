@@ -23,6 +23,7 @@ CMscnProblem Tester::LoadProblem(std::string fileName)
 	{
 		fscanf(file,"%f",&num);
 		loadedProblem.GetSupplier(i)->SetProductivePower(num);
+		//fscanf(file, "%c", str);
 	}
 	
 	fscanf(file,"%s",str); // sf
@@ -195,18 +196,15 @@ Solution Tester::LoadSolution(std::string fileName)
 	}
 
 	fclose(file);
-	return loadedSolution;
+	return std::move(loadedSolution);
 }
 
-void Tester::SaveProblem(CMscnProblem& problem)
-{
-	
-}
+
 
 void Tester::CreateRandomTest()
 {
 	srand (time(NULL));
-	file = fopen("RandomTest.txt","w");
+	file = fopen("RandomTest.txt","w+");
 	char sups[4] ={'D','F','M','S'};
 	int sizes[4];
 	fprintf(file,"RandomTest: \nPlik problemu: \n");

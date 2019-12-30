@@ -1,5 +1,11 @@
 #include "Solution.h"
 #include <iostream>
+Solution::Solution(Solution&& other)
+{
+	solution = other.solution;
+	other.solution = NULL;
+	size = other.size;
+}
 Solution::Solution(int supSize, int facSize, int warSize, int shopSize)
 {
 	size = supSize*facSize+facSize*warSize+warSize*shopSize;

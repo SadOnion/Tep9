@@ -1,7 +1,5 @@
 ﻿#include "CMscnProblem.h"
 #include <iostream>
-#include "Serializer.h"
-#include "Matrix.h"
 #include "Tester.h"
 #include "CRandom.h"
 #pragma warning(disable:4996)
@@ -30,10 +28,8 @@ int main()
 	ShowResults(test,testFile,9580,true);
 	testFile ="TestData/CalculatedTest1";
 	ShowResults(test,testFile,-800,true);
-	
 	testFile ="TestData/CalculatedTest2";
 	ShowResults(test,testFile,-650,false);
-	
 	testFile ="TestData/CalculatedTest3";
 	ShowResults(test,testFile,245,false);
 	testFile ="TestData/ZeroTest";
@@ -49,9 +45,9 @@ int main()
 	testFile ="TestData/RandomTest4";
 	ShowResults(test,testFile);
 	testFile ="TestData/Test";
-	ShowResults(test, testFile);
-	//test.CreateRandomTest();
-
+	ShowResults(test, testFile, -3.14159e+06,true);
+	test.CreateRandomTest();
+	
 }
 
 

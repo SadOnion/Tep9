@@ -109,7 +109,7 @@ bool CMscnProblem::AssumptionsCorrect()
 	return true;
 }
 
-bool CMscnProblem::ConstrainsSatisfied(Solution solution)
+bool CMscnProblem::ConstrainsSatisfied(Solution& solution)
 {
 	
 	int expectedSize = suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
@@ -119,7 +119,7 @@ bool CMscnProblem::ConstrainsSatisfied(Solution solution)
 	{
 		if(tab[i] < 0) return false;
 	}
-	ApplySolution(solution.GetSolution());
+	if (ApplySolution(solution.GetSolution()) == false) return false;
 	return AssumptionsCorrect();
 }
 
@@ -135,14 +135,16 @@ void CMscnProblem::ResizeSupplierVector(std::vector<Supplier*> &vec,int size)
 	vec.resize(size);
 }
 
-void CMscnProblem::ApplySolution(double* sol)
+bool CMscnProblem::ApplySolution(double* sol)
 {
 	int index=0;
+	bool minmaxCorrect = true;
 		for (int i = 0; i < suppliers.size(); i++)
 		{
 			for (int j = 0; j < factories.size(); j++)
 			{
 				suppliers.at(i)->SetResourceOrderedFrom(j,sol[index]);
+				if (suppliers.at(i)->GetMin(j) < sol[index] || suppliers.at(i)->GetMax(j) > sol[index]) minmaxCorrect = false;
 				index++;
 			}
 		}
@@ -152,6 +154,7 @@ void CMscnProblem::ApplySolution(double* sol)
 			for (int j = 0; j < warehouses.size(); j++)
 			{
 				factories.at(i)->SetResourceOrderedFrom(j,sol[index]);
+				if (factories.at(i)->GetMin(j) < sol[index] || factories.at(i)->GetMax(j) > sol[index]) minmaxCorrect = false;
 				index++;
 			}
 		}
@@ -161,9 +164,11 @@ void CMscnProblem::ApplySolution(double* sol)
 			for (int j = 0; j < shops.size(); j++)
 			{
 				warehouses.at(i)->SetResourceOrderedFrom(j, sol[index]);
+				if (warehouses.at(i)->GetMin(j) < sol[index] || warehouses.at(i)->GetMax(j) > sol[index]) minmaxCorrect = false;
 				index++;
 			}
 		}
+		return minmaxCorrect;
 }
 
 CMscnProblem::~CMscnProblem()
@@ -242,12 +247,12 @@ CMscnProblem::CMscnProblem(int supplierSize, int factorySize, int warehouseSize,
 	
 }
 
-double CMscnProblem::GetQuality(Solution solution)
+double CMscnProblem::GetQuality(Solution& solution)
 {
-	bool isSolutionGood = true;
+	
 	int expectedSize = suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
-	if(solution.GetSize() != expectedSize) isSolutionGood= false;
-	if(isSolutionGood)
+	
+	if(solution.GetSize() == expectedSize)
 	{
 		ApplySolution(solution.GetSolution());
 		double quality = CalculateIncomeFromShops() - CalculateContractCost() - CalculateTransportCost();
@@ -323,7 +328,6 @@ void CMscnProblem::SetShopsSize(int size)
 
 bool CMscnProblem::SaveProblem(std::string fileName)
 {
-	std::cout<<"siema";
 	FILE* file = fopen(fileName.c_str(),"w");
 	if(file == NULL) return false;
 		fprintf(file,"%c ",'D');
@@ -348,7 +352,9 @@ bool CMscnProblem::SaveProblem(std::string fileName)
 	fprintf(file,"%s","sd \n"); // sd
 	for (int i = 0; i < suppliers.size(); i++)
 	{
-		fprintf(file,"%g ",suppliers.at(i)->maxProductivePower);
+		//fprintf(file,"%g ",suppliers.at(i)->maxProductivePower);
+		fprintf(file, "%g", suppliers.at(i)->maxProductivePower);
+		fprintf(file, "%c", ';');
 	}
 	
 	fprintf(file,"%s","\nsf \n"); // sf
