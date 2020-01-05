@@ -4,6 +4,9 @@
 #include "CRandom.h"
 #include <ctime>
 #include "CRandomSearch.h"
+#include "Timer.h"
+#include "Individual.h"
+#include "CDiffEvol.h"
 #pragma warning(disable:4996)
 
 void ShowResults(Tester &test,std::string testFile)
@@ -48,17 +51,24 @@ void Tests() {
 	ShowResults(test, testFile, -3.14159e+06, true);
 	test.CreateRandomTest();
 }
-int main()
-{
-	
+void RandomSearch(){
 	std::string testFile = "TestData/CalculatedTest3";
 	Tester test;
 	Solution s = test.LoadSolution(testFile + "S.txt");
 	CRandomSearch rs;
-	CMscnProblem prob = rs.Search(s,60);
+	CMscnProblem prob = rs.Search(s,10);
 	prob.PrintInfo();
 	std::cout << "Q:" << prob.GetQuality(s);
-	
+}
+int main()
+{
+	std::string testFile = "nt";
+	Tester test;
+	CMscnProblem problem = test.LoadProblem(testFile+".txt");
+
+	CDiffEvol evol(problem,.5);
+	Solution sol = evol.Search(30,400);
+	sol.Print();
 }
 
 

@@ -21,11 +21,12 @@ public:
 	void SetProductivePower(double power){maxProductivePower = power;}
 	void SetContractCost(double cost){contractCost = cost;}
 	void SetMinResource(int index,double minim){min.at(index)=minim;}
-	void SetMaxResource(int index,double maxim){min.at(index)=maxim;}
+	void SetMaxResource(int index,double maxim){max.at(index)=maxim;}
 	double GetCostTo(int index,double cost){return deliveryCost.at(index);}
 	double GetResourceOrderedFrom(int index){return amountOfResourceOrdered.at(index);}
 	double GetMin(int index){return min.at(index);}
 	double GetMax(int index){return max.at(index);}
+	double GetPower(){return maxProductivePower;}
 	double TotalTransportCost();
 	double TotalResourceOutput();
 	double GetContractCost();

@@ -312,9 +312,13 @@ void Tester::CreateRandomTest()
 	{
 		for (int j = 0; j < sizes[1]; j++)
 		{
+			
+			fprintf(file,"%i ",0);
 			int random = rand() % 1000;
-			fprintf(file,"%i ",random);
-			random = rand() % 1000;
+			int min = random;
+			while(random < min){
+				random = rand() % 1000;
+			}
 			fprintf(file,"%i ",random);
 		}
 	}
@@ -324,9 +328,13 @@ void Tester::CreateRandomTest()
 	{
 		for (int j = 0; j < sizes[2]; j++)
 		{
+			
+			fprintf(file,"%i ",0);
 			int random = rand() % 1000;
-			fprintf(file,"%i ",random);
-			random = rand() % 1000;
+			int min = random;
+			while(random < min){
+				random = rand() % 1000;
+			}
 			fprintf(file,"%i ",random);
 		}
 	}
@@ -336,9 +344,13 @@ void Tester::CreateRandomTest()
 	{
 		for (int j = 0; j < sizes[3]; j++)
 		{
+			
+			fprintf(file,"%i ",0);
 			int random = rand() % 1000;
-			fprintf(file,"%i ",random);
-			random = rand() % 1000;
+			int min = random;
+			while(random < min){
+				random = rand() % 1000;
+			}
 			fprintf(file,"%i ",random);
 		}
 	}

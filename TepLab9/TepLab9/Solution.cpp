@@ -1,5 +1,5 @@
 #include "Solution.h"
-#include <iostream>
+
 Solution::Solution(Solution&& other)
 {
 	solution = other.solution;
@@ -20,9 +20,31 @@ Solution::Solution(int supSize, int facSize, int warSize, int shopSize)
 	solution = new double[size];
 }
 
+Solution::Solution(Vector4& sizes)
+{
+	suppliersSize = sizes.x;
+	factoriesSize = sizes.y;
+	warehousesSize = sizes.z;
+	shopsSize= sizes.z;
+	size = suppliersSize*factoriesSize+factoriesSize*warehousesSize+warehousesSize*shopsSize;
+	solution = new double[size];
+}
+
+
 void Solution::Set(int index, double resourceOrdered)
 {
 	solution[index] = resourceOrdered;
+}
+
+void Solution::Set(double* newSol,int size)
+{
+	delete solution;
+	solution = new double[size];
+	for (int i = 0; i < size; i++)
+	{
+		solution[i] = newSol[i];
+	}
+	
 }
 
 void Solution::Print()

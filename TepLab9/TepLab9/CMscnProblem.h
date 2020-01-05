@@ -5,6 +5,7 @@
 #include <string>
 #include "CRandom.h"
 
+
 #define BAD_SOLUTION 0.34041
 #pragma warning(disable:4996)
 class CMscnProblem
@@ -54,6 +55,9 @@ public:
 	void PrintInfo();
 	void GenerateInstance(unsigned int seed);
 	void Take(CMscnProblem& other);
+
+	int CorrectSolutionSize();
+	Vector4 Sizes();
 };
 
 

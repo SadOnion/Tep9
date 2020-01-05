@@ -151,27 +151,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CDiffEvol.cpp" />
     <ClCompile Include="CMscnProblem.cpp" />
     <ClCompile Include="CRandom.cpp" />
     <ClCompile Include="CRandomSearch.cpp" />
+    <ClCompile Include="Individual.cpp" />
+    <ClCompile Include="Population.cpp" />
     <ClCompile Include="RandomSetter.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Solution.cpp" />
     <ClCompile Include="Supplier.cpp" />
     <ClCompile Include="TepLab9.cpp" />
     <ClCompile Include="Tester.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CDiffEvol.h" />
     <ClInclude Include="CMscnProblem.h" />
     <ClInclude Include="CRandom.h" />
     <ClInclude Include="CRandomSearch.h" />
+    <ClInclude Include="Individual.h" />
+    <ClInclude Include="Population.h" />
     <ClInclude Include="RandomSetter.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Solution.h" />
     <ClInclude Include="Supplier.h" />
     <ClInclude Include="Tester.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Vector4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

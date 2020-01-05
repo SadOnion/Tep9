@@ -454,50 +454,51 @@ ConstraintsSatisfied=false
 
 RandomTest4:
 Plik problemu:
-D 6
+D 1
 F 1
 M 1
-S 1
+S 5
 sd 
-38 33 66 88 68 71 
+46 
 sf 
-33 
-sm 
-14 
-ss 
-26 
-cd 
-28 43 44 20 43 35 
-cf 
-14 
-cm 
-22 
-ud 
-70 71 16 71 61 5 
-uf 
-23 
-um 
-27 
-p 
 1 
+sm 
+76 
+ss 
+12 22 35 82 31 
+cd 
+38 
+cf 
+3 
+cm 
+3 48 13 48 28 
+ud 
+14 
+uf 
+60 
+um 
+52 
+p 
+6 1 5 1 6 
 xdminmax 
-62 444 747 867 428 791 378 705 187 694 60 594 
+9 905 
 xfminmax 
-451 814 
+588 946 
 xmminmax 
-751 772 
+475 59 920 39 892 308 317 599 214 194 
 
 Plik rozwiązania:
-D 6
+D 1
 F 1
 M 1
-S 1
+S 5
 xd 
-5 3 4 4 2 1 
-xf 
 2 
+xf 
+3 
 xm 
-5 
+5 5 2 3 5 
 
-Quality=-1123
+
+Quality=-698
 ConstraintsSatisfied=false

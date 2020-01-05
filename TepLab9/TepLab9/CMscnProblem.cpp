@@ -276,10 +276,12 @@ CMscnProblem& CMscnProblem::operator=(CMscnProblem&& other)
 	return *this;
 }
 
+
+
 double CMscnProblem::GetQuality(Solution& solution)
 {
 	
-	int expectedSize = suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
+	int expectedSize = CorrectSolutionSize();
 	
 	if(solution.GetSize() == expectedSize)
 	{
@@ -544,6 +546,37 @@ void CMscnProblem::PrintInfo()
 		}
 		std::cout<<std::endl;
 	}
+
+	for (int i = 0; i < suppliers.size(); i++)
+	{
+		for (int j = 0; j < factories.size(); j++)
+		{
+
+			std::cout<<"min:"<<GetSupplier(i)->GetMin(j)<<" ";
+			std::cout<<"max:"<<GetSupplier(i)->GetMax(j)<<std::endl;
+		}
+	}
+	std::cout<<std::endl;
+	for (int i = 0; i < factories.size(); i++)
+	{
+		for (int j = 0; j < warehouses.size(); j++)
+		{
+
+			std::cout<<GetFactory(i)->GetMin(j)<<" ";
+			std::cout<<GetFactory(i)->GetMax(j)<<std::endl;
+		}
+	}
+	std::cout<<std::endl;
+
+	for (int i = 0; i < warehouses.size(); i++)
+	{
+		for (int j = 0; j < shops.size(); j++)
+		{
+
+			std::cout<<GetWarehouse(i)->GetMin(j)<<" ";
+			std::cout<<GetWarehouse(i)->GetMax(j)<<std::endl;
+		}
+	}
 }
 
 void CMscnProblem::GenerateInstance(unsigned int seed)
@@ -592,6 +625,16 @@ void CMscnProblem::Take(CMscnProblem& other) {
 		other.shops.at(i) = new Shop();
 	}
 	
+}
+
+int CMscnProblem::CorrectSolutionSize()
+{
+	return suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
+}
+
+Vector4 CMscnProblem::Sizes()
+{
+	return Vector4(suppliers.size(),factories.size(),warehouses.size(),shops.size());
 }
 
 
