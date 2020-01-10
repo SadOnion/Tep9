@@ -1,5 +1,6 @@
 #include "Solution.h"
 
+
 Solution::Solution(Solution&& other)
 {
 	solution = other.solution;
@@ -54,3 +55,5 @@ void Solution::Print()
 		std::cout<<solution[i]<<" ";
 	}
 }
+
+

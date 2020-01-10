@@ -12,5 +12,6 @@ public:
 	int Range(int min,int max);
 	double Range(double min,double max);
 	double Range(double min,double max,int precision);
+	int RandomSeed();
 };
 

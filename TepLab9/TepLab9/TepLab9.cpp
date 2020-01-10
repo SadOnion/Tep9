@@ -56,19 +56,18 @@ void RandomSearch(){
 	Tester test;
 	Solution s = test.LoadSolution(testFile + "S.txt");
 	CRandomSearch rs;
-	CMscnProblem prob = rs.Search(s,10);
+	CMscnProblem prob = rs.Search(s,5);
 	prob.PrintInfo();
 	std::cout << "Q:" << prob.GetQuality(s);
 }
 int main()
 {
-	std::string testFile = "nt";
-	Tester test;
-	CMscnProblem problem = test.LoadProblem(testFile+".txt");
-
-	CDiffEvol evol(problem,.5);
-	Solution sol = evol.Search(30,400);
-	sol.Print();
+	
+	
+	
+	CRandomSearch rs;
+	rs.Search2();
+	
 }
 
 

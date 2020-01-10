@@ -25,5 +25,7 @@ public:
 	void Set(double* newSol, int size);
 	double* const GetSolution(){return solution;}
 	void Print();
+	
+	friend class SolutionGenerator;
 };
 

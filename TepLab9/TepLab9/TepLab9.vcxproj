@@ -160,6 +160,7 @@
     <ClCompile Include="RandomSetter.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Solution.cpp" />
+    <ClCompile Include="SolutionGenerator.cpp" />
     <ClCompile Include="Supplier.cpp" />
     <ClCompile Include="TepLab9.cpp" />
     <ClCompile Include="Tester.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="RandomSetter.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Solution.h" />
+    <ClInclude Include="SolutionGenerator.h" />
     <ClInclude Include="Supplier.h" />
     <ClInclude Include="Tester.h" />
     <ClInclude Include="Timer.h" />

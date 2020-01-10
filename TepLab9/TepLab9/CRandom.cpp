@@ -26,7 +26,7 @@ double CRandom::Range(double min, double max)
     std::uniform_real_distribution<> dis(min, max);
 	float value = (int)(dis(gen) * 10 + .5); 
     return (float)value / 10; 
-	return value;
+	
 }
 
 double CRandom::Range(double min, double max, int precision)
@@ -36,5 +36,10 @@ double CRandom::Range(double min, double max, int precision)
     std::uniform_real_distribution<> dis(min, max);
 	float value = (int)(dis(gen) * prec + .5); 
     return (float)value / prec; 
-	return value;
+	
+}
+
+int CRandom::RandomSeed()
+{
+	return rd();
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "CMscnProblem.h"
+#include "SolutionGenerator.h"
 class CRandomSearch
 {
 private:
@@ -7,5 +7,6 @@ private:
 public:
 	CMscnProblem Search(Solution& solution);
 	CMscnProblem Search(Solution& solution,double timeInSec);
+	void Search2();
 };
 
