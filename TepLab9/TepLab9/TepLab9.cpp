@@ -62,11 +62,14 @@ void RandomSearch(){
 }
 int main()
 {
-	
-	
-	
-	CRandomSearch rs;
-	rs.Search2();
+	std::string testFile = "TestData/CalculatedTest3";
+	Tester test;
+	CMscnProblem problem = test.LoadProblem(testFile + ".txt");
+	CDiffEvol evolution(problem,.5);
+	Solution s1 = evolution.Search(3,500);
+	std::cout<< "Q1:"<<evolution.GetQuality();
+
+
 	
 }
 

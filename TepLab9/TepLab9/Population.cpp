@@ -16,3 +16,11 @@ void Population::SetIndividualsGeneSize(int size)
 		}
 	}
 }
+
+void Population::Print()
+{
+	for (int i = 0; i < size; i++)
+	{
+		individuals[i].Print();
+	}
+}

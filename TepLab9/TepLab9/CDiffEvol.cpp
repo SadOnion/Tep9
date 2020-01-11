@@ -63,6 +63,12 @@ Individual CDiffEvol::GetRandomIndividual()
 	return individual;
 }
 
+Individual CDiffEvol::GetRandomIndividualFromPopulation(Population& population)
+{
+	int randomIndex = rand.Range(0,population.GetSize()-1);
+	return population[randomIndex];
+}
+
 Solution CDiffEvol::GetBestSolution(Population& population)
 {
 	Vector4 vec = problem.Sizes();
@@ -137,6 +143,7 @@ CDiffEvol::CDiffEvol(CMscnProblem& prob, float crossProb)
 		crossProbability=DEFAULT_CROSS_PROBABILITY;
 	}
 	diffWeight=DEFAULT_DIFF_WEIGHT;
+	quality=0;
 }
 
 
@@ -156,12 +163,15 @@ Solution CDiffEvol::Search(double timeInSec,int populationSize)
 	{
 		for (int i = 0; i < populationSize; i++)
 		{
-			Individual indNew(geneSize);
-			Individual baseInd = GetRandomIndividual();
-			Individual addInd0 = GetRandomIndividual();
-			Individual addInd1 = GetRandomIndividual();
 			
-			if(AreDifferent(indNew,baseInd,addInd0,addInd1))
+			Individual indNew(geneSize);
+			
+			Individual baseInd = GetRandomIndividualFromPopulation(population);
+			Individual addInd0 = GetRandomIndividualFromPopulation(population);
+			
+			Individual addInd1 = GetRandomIndividualFromPopulation(population);
+			
+			if(AreDifferent(population[i],baseInd,addInd0,addInd1))
 			{
 				for (int geneOffset = 0; geneOffset < geneSize; geneOffset++)
 				{
@@ -170,6 +180,10 @@ Solution CDiffEvol::Search(double timeInSec,int populationSize)
 						double newVal = baseInd[geneOffset] + diffWeight*(addInd0[geneOffset]-addInd1[geneOffset]);
 
 						if(CorrectGeneValue(newVal,geneOffset))indNew[geneOffset] = newVal;
+						else
+						{
+							indNew[geneOffset] = population[i][geneOffset];
+						}
 					}else
 					{
 						indNew[geneOffset] = population[i][geneOffset];
@@ -177,7 +191,9 @@ Solution CDiffEvol::Search(double timeInSec,int populationSize)
 				}
 				if(Fitness(indNew) >= Fitness(population[i]))
 				{
+					
 					population[i] = indNew;
+					
 				}
 			}
 			
@@ -187,11 +203,12 @@ Solution CDiffEvol::Search(double timeInSec,int populationSize)
 			std::cout<< " . ";
 			secCounter++;
 		}
-
-
+		
+		
 	}
-	
-	return GetBestSolution(population);
+	Solution solution = GetBestSolution(population);
+	quality = problem.GetQuality(solution);
+	return std::move(solution);
 }
 
 double CDiffEvol::Fitness(Individual& individual)

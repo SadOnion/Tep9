@@ -1,4 +1,5 @@
 #include "Individual.h"
+#include <iostream>
 
 
 
@@ -50,4 +51,13 @@ Individual Individual::operator=(const Individual& other)
 		genes[i] = other.genes[i];
 	}
 	return *this;
+}
+
+void Individual::Print()
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout<<genes[i]<<" ; ";
+	}
+	std::cout<<"Size"<<size<<"\n";
 }

@@ -1,2 +1,16 @@
-﻿  SolutionGenerator.cpp
-  TepLab9.vcxproj -> E:\Git\Tep9\TepLab9\Debug\TepLab9.exe
+﻿  CDiffEvol.cpp
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(110,9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(111,9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(114,58): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(115,58): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(119,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(119,61): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(120,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(120,61): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(125,59): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(125,63): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(126,59): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(126,63): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\Population.h(12): warning C4715: "Population::operator[]”: niewszystkie ścieżki kodu zwracają wartość
+D:\Applications\Tep9\TepLab9\TepLab9\Individual.h(13): warning C4715: "Individual::operator[]”: niewszystkie ścieżki kodu zwracają wartość
+  TepLab9.vcxproj -> D:\Applications\Tep9\TepLab9\Debug\TepLab9.exe

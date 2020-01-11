@@ -12,5 +12,6 @@ public:
 	Individual& operator[] (int index){if(index>=0&&index<size)return individuals[index];}
 	void SetIndividualsGeneSize(int size);
 	int GetSize(){return size;}
+	void Print();
 };
 

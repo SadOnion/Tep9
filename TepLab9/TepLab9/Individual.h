@@ -16,5 +16,6 @@ public:
 	int GetSize(){return size;}
 	double* GetGenes(){return genes;}
 	Individual operator=(const Individual& other);
+	void Print();
 };
 
