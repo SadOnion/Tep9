@@ -7,6 +7,7 @@ private:
 	int size;
 public:
 	Individual();
+	Individual(double* genes,int size);
 	Individual(int geneSize);
 	Individual(const Individual& other);
 	~Individual(){if(genes != nullptr){delete genes;}}

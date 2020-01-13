@@ -1,12 +1,16 @@
 #pragma once
 #include "SolutionGenerator.h"
-class CRandomSearch
+#include "IOptimizer.h"
+class CRandomSearch : public IOptimizer
 {
 private:
 	const double DEFAULT_TIME = 10;
+	IProblem* problem;
+	double searchDuration;
 public:
-	CMscnProblem Search(Solution& solution);
-	CMscnProblem Search(Solution& solution,double timeInSec);
-	void Search2();
+	CRandomSearch(IProblem* problem);
+	CRandomSearch(IProblem* problem,double timeInSec);
+	 // Odziedziczono za poœrednictwem elementu IOptimizer
+	 virtual ISolution* Search() override;
 };
 

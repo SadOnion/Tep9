@@ -2,6 +2,17 @@
 #include <ctime>
 #include <iostream>
 #include "Timer.h"
+CRandomSearch::CRandomSearch(IProblem* problem)
+{
+	this->problem = problem;
+	searchDuration=DEFAULT_TIME;
+}
+CRandomSearch::CRandomSearch(IProblem* problem, double timeInSec)
+{
+	this->problem = problem;
+	searchDuration=timeInSec;
+}
+/*
 CMscnProblem CRandomSearch::Search(Solution& solution)
 {
 	CMscnProblem bestProblem(solution.GetSuppliersSize(), solution.GetFactoriesSize(), solution.GetWarehousesSize(), solution.GetShopsSize());
@@ -61,44 +72,29 @@ CMscnProblem CRandomSearch::Search(Solution& solution, double timeInSec)
 
 	return std::move(bestProblem);
 }
-
-void CRandomSearch::Search2()
+*/
+ISolution* CRandomSearch::Search()
 {
-	CMscnProblem problem(2, 2, 2, 2);
+	
 	CRandom rand;
-	problem.GenerateInstance(rand.RandomSeed());
-	Vector4 sizes = problem.Sizes();
-	Solution bestSol(sizes);
-	Solution tempSol(sizes);
-	SolutionGenerator gen;
-	gen.GenerateRandomSolution(problem,bestSol);
-	int timeInSec = 2;
+	problem->GenerateInstance(rand.RandomSeed());
+	int size = problem->CorrectSolutionSize();
+	Solution bestSol(problem->CorrectRandomSolution(),size);
+	Solution tempSol(problem->CorrectRandomSolution(),size);
+
 	Timer timer;
 	timer.Start();
-	bool bestOrNot = false;
-	while (timer.TimeFromStart() < timeInSec)
+	
+	while (timer.TimeFromStart() < searchDuration)
 	{
-		
-		if (!bestOrNot) {
-			gen.GenerateRandomSolution(problem, tempSol);
-			if (problem.GetQuality(bestSol) < problem.GetQuality(tempSol)) {
-				bestOrNot = true;
-			}
-		}
-		else {
-			gen.GenerateRandomSolution(problem, bestSol);
-			if (problem.GetQuality(bestSol) > problem.GetQuality(tempSol)) {
-				bestOrNot = false;
-			}
-		}
+		if(problem->GetQuality(bestSol) < problem->GetQuality(tempSol))
+		{
+			bestSol.Set(tempSol.GetSolution(),size);
+		}	
+		tempSol.Set(problem->CorrectRandomSolution(),size);
 	}
-	if (bestOrNot) {
-		std::cout << problem.GetQuality(tempSol);
-	}
-	else {
-		std::cout << problem.GetQuality(bestSol);
-	}
-		
+	return new Solution(std::move(bestSol));
 }
+
 
 

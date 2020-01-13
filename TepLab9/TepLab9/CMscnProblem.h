@@ -4,15 +4,13 @@
 #include "Solution.h"
 #include <string>
 #include "CRandom.h"
-
+#include "CProblem.h"
 
 #define BAD_SOLUTION 0.34041
 #pragma warning(disable:4996)
-class CMscnProblem
+class CMscnProblem : public IProblem
 {
 	private:
-
-		
 
 		std::vector<Supplier*> suppliers;
 		std::vector<Supplier*> factories;
@@ -32,6 +30,7 @@ class CMscnProblem
 		bool AssumptionsCorrect();
 		void ResizeSupplierVector(std::vector<Supplier*> &vec,int size);
 		bool ApplySolution(double* solution);
+		void FixSolution(double* solution);
 		
 public:
 	~CMscnProblem();
@@ -39,7 +38,7 @@ public:
 	CMscnProblem(CMscnProblem&& other);
 	CMscnProblem(int supplierSize,int factorySize,int warehouseSize,int shopSize);
 	CMscnProblem& operator=(CMscnProblem&& other);
-	double GetQuality(Solution& solution);
+	
 	bool ConstrainsSatisfied(Solution& solution);
 	void SetSuppliersSize(int size);
 	void SetFactoriesSize(int size);
@@ -53,11 +52,30 @@ public:
 
 	bool SaveProblem(std::string fileName);
 	void PrintInfo();
-	void GenerateInstance(unsigned int seed);
 	void Take(CMscnProblem& other);
 
-	int CorrectSolutionSize();
+	
 	Vector4 Sizes();
+
+
+
+
+	
+	double GetQualityAndFixSolution(ISolution& solution);
+	// Odziedziczono za poœrednictwem elementu IProblem
+	 double GetQuality(ISolution& solution) override;
+
+	 int CorrectSolutionSize() override;
+
+	void GenerateInstance(unsigned int seed);
+
+	
+	 bool CorrectValue(double newVal, int index) override;
+
+
+	
+	double* CorrectRandomSolution() override;
+
 };
 
 

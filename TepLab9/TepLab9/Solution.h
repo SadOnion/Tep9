@@ -1,7 +1,8 @@
 #pragma once
 #include "Vector4.h"
 #include <iostream>
-class Solution
+#include "ISolution.h"
+class Solution : public ISolution
 {
 private:
 	double* solution;
@@ -15,7 +16,7 @@ public:
 	Solution(Solution&& other);
 	Solution(int supSize,int facSize,int warSize,int shopSize);
 	Solution(Vector4& sizes);
-
+	Solution(double* sol,int size);
 	int GetSize(){return size;}
 	int GetSuppliersSize() { return suppliersSize; }
 	int GetFactoriesSize() { return factoriesSize; }

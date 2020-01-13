@@ -6,7 +6,7 @@ CMscnProblem Tester::LoadProblem(std::string fileName)
 {
 	file = fopen(fileName.c_str(),"r");
 	int index = 0;
-	char str[10];
+	char str[15];
 	float num;
 	int inum;
 	int suppliersSizes[4];

@@ -7,6 +7,7 @@
 #include "Timer.h"
 #include "Individual.h"
 #include "CDiffEvol.h"
+#include <windows.h>
 #pragma warning(disable:4996)
 
 void ShowResults(Tester &test,std::string testFile)
@@ -52,23 +53,62 @@ void Tests() {
 	test.CreateRandomTest();
 }
 void RandomSearch(){
-	std::string testFile = "TestData/CalculatedTest3";
+	std::string testFile = "TestData/CalculatedTest3.txt";
 	Tester test;
-	Solution s = test.LoadSolution(testFile + "S.txt");
-	CRandomSearch rs;
-	CMscnProblem prob = rs.Search(s,5);
-	prob.PrintInfo();
-	std::cout << "Q:" << prob.GetQuality(s);
+	CMscnProblem cProblem = test.LoadProblem(testFile);
+	CRandomSearch rs(&cProblem,2);
+	ISolution* sol = rs.Search();
+	
+	std::cout << "Q:" << cProblem.GetQuality(*sol);
+}
+void Interfaces(){
+	std::string testFile = "TestData/CalculatedTest1.txt";
+	Tester test;
+	CMscnProblem problem = test.LoadProblem(testFile);
+	
+	CDiffEvol evolution(new CMscnProblem(std::move(problem)),.35,.5,400,5);
+	ISolution* s1 = evolution.Search();
+	std::cout<< "Q1:"<<evolution.GetQuality();
 }
 int main()
 {
-	std::string testFile = "TestData/CalculatedTest3";
-	Tester test;
-	CMscnProblem problem = test.LoadProblem(testFile + ".txt");
-	CDiffEvol evolution(problem,.5);
-	Solution s1 = evolution.Search(3,500);
-	std::cout<< "Q1:"<<evolution.GetQuality();
 
+
+	Timer timer;
+	timer.Start();
+
+
+
+	std::string testFile = "TestData/CalculatedTest3.txt";
+	Tester test;
+	CMscnProblem cProblem = test.LoadProblem(testFile);
+	Solution sol(cProblem.CorrectRandomSolution(),cProblem.CorrectSolutionSize());
+	cProblem.PrintInfo();
+	sol.Print();
+	std::cout<<cProblem.ConstrainsSatisfied(sol)<<"\n";
+	cProblem.GetQualityAndFixSolution(sol);
+	std::cout<<cProblem.ConstrainsSatisfied(sol)<<"\n";
+
+	sol.Print();
+
+
+
+
+	IProblem* problem = new CMscnProblem(std::move(cProblem));
+	ISolution* solution;
+	IOptimizer* optimizer = new CRandomSearch(problem,2);
+
+	std::cout<<"T:"<<timer.TimeFromStart();
+
+	solution = optimizer->Search();
+	std::cout << "RandomSearch Quality:" << problem->GetQuality(*solution);
+	delete optimizer;
+	delete solution;
+	optimizer = new CDiffEvol(problem,.25,.4,400,3.0);
+	solution = optimizer->Search();
+	std::cout << "DiffEvolution Quality:" << problem->GetQuality(*solution);
+
+	std::cout<<"T:"<<timer.TimeFromStart();
 
 	
 }

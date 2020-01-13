@@ -77,12 +77,14 @@ bool CMscnProblem::AssumptionsCorrect()
 	{
 		if(factories.at(i)->CanProduceEnoughResources() == false) return false;
 	}
+
 	
 
 	for (int i = 0; i < warehouses.size(); i++)
 	{
 		if(warehouses.at(i)->CanProduceEnoughResources() == false) return false;
 	}
+	
 	
 
 	for (int j = 0; j < factories.size(); j++)
@@ -95,6 +97,7 @@ bool CMscnProblem::AssumptionsCorrect()
 		if(sum < factories.at(j)->TotalResourceOutput()) return false;
 	}
 	
+	
 
 	for (int j = 0; j < warehouses.size(); j++)
 	{
@@ -106,6 +109,7 @@ bool CMscnProblem::AssumptionsCorrect()
 		
 		if(sum< warehouses.at(j)->TotalResourceOutput()) return false;
 	}
+	
 	
 
 	return true;
@@ -146,7 +150,7 @@ bool CMscnProblem::ApplySolution(double* sol)
 			for (int j = 0; j < factories.size(); j++)
 			{
 				suppliers.at(i)->SetResourceOrderedFrom(j,sol[index]);
-				if (suppliers.at(i)->GetMin(j) < sol[index] || suppliers.at(i)->GetMax(j) > sol[index]) minmaxCorrect = false;
+				if (suppliers.at(i)->GetMin(j) > sol[index] || suppliers.at(i)->GetMax(j) < sol[index]) minmaxCorrect = false;
 				index++;
 			}
 		}
@@ -156,7 +160,7 @@ bool CMscnProblem::ApplySolution(double* sol)
 			for (int j = 0; j < warehouses.size(); j++)
 			{
 				factories.at(i)->SetResourceOrderedFrom(j,sol[index]);
-				if (factories.at(i)->GetMin(j) < sol[index] || factories.at(i)->GetMax(j) > sol[index]) minmaxCorrect = false;
+				if (factories.at(i)->GetMin(j) > sol[index] || factories.at(i)->GetMax(j) < sol[index]) minmaxCorrect = false;
 				index++;
 			}
 		}
@@ -166,11 +170,108 @@ bool CMscnProblem::ApplySolution(double* sol)
 			for (int j = 0; j < shops.size(); j++)
 			{
 				warehouses.at(i)->SetResourceOrderedFrom(j, sol[index]);
-				if (warehouses.at(i)->GetMin(j) < sol[index] || warehouses.at(i)->GetMax(j) > sol[index]) minmaxCorrect = false;
+				if (warehouses.at(i)->GetMin(j) > sol[index] || warehouses.at(i)->GetMax(j) < sol[index]) minmaxCorrect = false;
 				index++;
 			}
 		}
 		return minmaxCorrect;
+}
+
+void CMscnProblem::FixSolution(double* solution)
+{
+	ApplySolution(solution);
+	Vector4 sizes=Sizes();
+		CRandom rand;
+		int index=0;
+		std::vector<double> factoriesInput(factories.size());
+		std::vector<double> warehousesInput(warehouses.size());
+		for (int i = 0; i < sizes.y; i++)
+		{
+			for (int j = 0; j < sizes.x; j++)
+			{
+				factoriesInput.at(i) = GetSupplier(j)->amountOfResourceOrdered.at(i);
+			}
+		}
+		for (int i = 0; i < sizes.z; i++)
+		{
+			for (int j = 0; j < sizes.y; j++)
+			{
+				warehousesInput.at(i) = GetFactory(j)->amountOfResourceOrdered.at(i);
+			}
+		}
+
+
+		for (int i = 0; i < sizes.x; i++)
+		{
+			double power = GetSupplier(i)->GetPower();
+			for (int j = 0; j < sizes.y; j++)
+			{
+				double random = rand.Range(GetSupplier(i)->GetMin(j),GetSupplier(i)->GetMax(j));
+				if(power-random <0)
+				{
+					
+					double min =GetSupplier(i)->GetMin(j);
+					if(power > min){
+						random = rand.Range(GetSupplier(i)->GetMin(j),power);
+					}else{
+						random=0;
+					}
+					
+				}
+				solution[index++] = random;
+				power-=random;
+
+			}
+		}
+		for (int i = 0; i < sizes.y; i++)
+		{
+			double power = GetFactory(i)->GetPower();
+			double input =factoriesInput.at(i);
+			double upperBounds = power>input? input:power;
+			for (int j = 0; j < sizes.z; j++)
+			{
+				input += GetSupplier(j)->amountOfResourceOrdered.at(i);
+				double random = rand.Range(GetFactory(i)->GetMin(j),GetFactory(i)->GetMax(j));
+				if(upperBounds-random <0)
+				{
+					
+					double min =GetFactory(i)->GetMin(j);
+					if(upperBounds > min){
+						random = rand.Range(GetFactory(i)->GetMin(j),upperBounds);
+					}else{
+						random=0;
+					}
+					
+				}
+				solution[index++] = random;
+				upperBounds-=random;
+
+			}
+		}
+		for (int i = 0; i < sizes.z; i++)
+		{
+			double power = GetWarehouse(i)->GetPower();
+			double input =warehousesInput.at(i);
+			double upperBounds = power>input? input:power;
+			for (int j = 0; j < sizes.r; j++)
+			{
+				double random = rand.Range(GetWarehouse(i)->GetMin(j),GetWarehouse(i)->GetMax(j));
+				if(upperBounds-random <0)
+				{
+					
+					double min =GetWarehouse(i)->GetMin(j);
+					if(upperBounds > min){
+						random = rand.Range(GetWarehouse(i)->GetMin(j),upperBounds);
+					}else{
+						random=0;
+					}
+					
+				}
+				solution[index++] = random;
+				upperBounds-=random;
+
+			}
+		}
 }
 
 
@@ -274,23 +375,6 @@ CMscnProblem& CMscnProblem::operator=(CMscnProblem&& other)
 		other.shops.at(i) = NULL;
 	}
 	return *this;
-}
-
-
-
-double CMscnProblem::GetQuality(Solution& solution)
-{
-	
-	int expectedSize = CorrectSolutionSize();
-	
-	if(solution.GetSize() == expectedSize)
-	{
-		ApplySolution(solution.GetSolution());
-		double quality = CalculateIncomeFromShops() - CalculateContractCost() - CalculateTransportCost();
-		return quality;
-	}
-	
-	return BAD_SOLUTION;
 }
 
 
@@ -632,10 +716,139 @@ int CMscnProblem::CorrectSolutionSize()
 	return suppliers.size()*factories.size()+factories.size()*warehouses.size()+warehouses.size()*shops.size();
 }
 
+bool CMscnProblem::CorrectValue(double newVal, int index)
+{
+	Vector4 sizes = Sizes();
+	int sf = sizes.x*sizes.y;
+	int fw = sf+sizes.y*sizes.z;
+	if(index < sf)
+	{
+		double min = GetSupplier((int)std::floorf(index/sizes.y))->GetMin(index%(int)sizes.y);
+		double max = GetSupplier((int)std::floorf(index/sizes.y))->GetMax(index%(int)sizes.y);
+		if(newVal>=min && newVal<=max)return true;
+		return false;
+	}else if(index < fw){
+		double min = GetFactory((int)std::floorf(index-sf)/sizes.z)->GetMin(index%(int)sizes.z);
+		double max = GetFactory((int)std::floorf(index-sf)/sizes.z)->GetMax(index%(int)sizes.z);
+		if(newVal>=min && newVal<=max)return true;
+		return false;
+	}else
+	{
+		double min = GetWarehouse((int)std::floorf(index-fw)/sizes.r)->GetMin(index%(int)sizes.r);
+		double max = GetWarehouse((int)std::floorf(index-fw)/sizes.r)->GetMax(index%(int)sizes.r);
+		if(newVal>=min && newVal<=max)return true;
+		return false;
+	}
+	return false;
+}
+
+double* CMscnProblem::CorrectRandomSolution()
+{
+	Vector4 sizes = Sizes();
+	CRandom rand;
+	double* individual = new double[CorrectSolutionSize()];
+	int index=0;
+	for (int i = 0; i < sizes.x; i++)
+	{
+		double power = GetSupplier(i)->GetPower();
+		for (int j = 0; j < sizes.y; j++)
+		{
+			double random = rand.Range(GetSupplier(i)->GetMin(j),GetSupplier(i)->GetMax(j));
+			if(power-random <0)
+			{
+				
+				double min =GetSupplier(i)->GetMin(j);
+				if(power > min){
+					random = rand.Range(GetSupplier(i)->GetMin(j),power);
+				}else{break;}
+				
+			}
+			individual[index++] = random;
+			power-=random;
+			if(power<0)break;
+
+		}
+	}
+	for (int i = 0; i < sizes.y; i++)
+	{
+		double power = GetFactory(i)->GetPower();
+		for (int j = 0; j < sizes.z; j++)
+		{
+
+			double random = rand.Range(GetFactory(i)->GetMin(j),GetFactory(i)->GetMax(j));
+			if(power-random <0)
+			{
+				double min =GetFactory(i)->GetMin(j);
+				if(power > min){
+					random = rand.Range(GetFactory(i)->GetMin(j),power);
+				}else{break;}
+				
+				
+			}
+			individual[index++] = random;
+			power-=random;
+			if(power<0)break;
+		}
+	}
+	for (int i = 0; i < sizes.z; i++)
+	{
+		double power = GetWarehouse(i)->GetPower();
+		for (int j = 0; j < sizes.r; j++)
+		{
+
+			double random = rand.Range(GetWarehouse(i)->GetMin(j),GetWarehouse(i)->GetMax(j));
+			if(power-random <0)
+			{
+				double min =GetWarehouse(i)->GetMin(j);
+				if(power > min){
+					random = rand.Range(GetWarehouse(i)->GetMin(j),power);
+				}else{break;}
+				
+			}
+			individual[index++] = random;
+			power-=random;
+			if(power<0)break;
+
+		}
+	}
+	return individual;
+}
+
 Vector4 CMscnProblem::Sizes()
 {
 	return Vector4(suppliers.size(),factories.size(),warehouses.size(),shops.size());
 }
+
+double CMscnProblem::GetQualityAndFixSolution(ISolution& solution)
+{
+	Solution sol(solution.GetSolution(),solution.GetSize());
+	if(!ConstrainsSatisfied(sol)){
+		
+		FixSolution(solution.GetSolution());
+	}
+	ApplySolution(solution.GetSolution());
+	return GetQuality(solution);
+}
+
+double CMscnProblem::GetQuality(ISolution& solution)
+{
+	int expectedSize = CorrectSolutionSize();
+	
+	if(solution.GetSize() == expectedSize)
+	{
+		ApplySolution(solution.GetSolution());
+		double quality = CalculateIncomeFromShops() - CalculateContractCost() - CalculateTransportCost();
+		return quality;
+	}
+	
+	return BAD_SOLUTION;
+}
+
+
+
+
+
+
 
 
 

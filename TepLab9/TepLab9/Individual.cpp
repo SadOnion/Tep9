@@ -13,6 +13,16 @@ Individual::Individual()
 	}
 }
 
+Individual::Individual(double* genes,int size)
+{
+	this->genes = new double[size];
+	for (int i = 0; i < size; i++)
+	{
+		this->genes[i] = genes[i];
+	}
+	this->size = size;
+}
+
 Individual::Individual(int geneSize)
 {
 	size=geneSize;

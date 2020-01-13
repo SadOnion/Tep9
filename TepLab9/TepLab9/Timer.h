@@ -1,11 +1,15 @@
 #pragma once
-#include <ctime>
+#include <windows.h>
+#include <cmath>
 class Timer
 {
 private:
-	clock_t time;
+	LARGE_INTEGER startTime;
+	LARGE_INTEGER frequency;
+	const int precision = 1000;
 public:
-	void Start(){time=std::clock();}
+	Timer();
+	void Start();
 	double TimeFromStart();
 };
 

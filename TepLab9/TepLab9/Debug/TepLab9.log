@@ -1,16 +1,96 @@
-﻿  CDiffEvol.cpp
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(110,9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(111,9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(114,58): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(115,58): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(119,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(119,61): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(120,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(120,61): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(125,59): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(125,63): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(126,59): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\CDiffEvol.cpp(126,63): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
-D:\Applications\Tep9\TepLab9\TepLab9\Population.h(12): warning C4715: "Population::operator[]”: niewszystkie ścieżki kodu zwracają wartość
-D:\Applications\Tep9\TepLab9\TepLab9\Individual.h(13): warning C4715: "Individual::operator[]”: niewszystkie ścieżki kodu zwracają wartość
+﻿  CMscnProblem.cpp
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(11,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(15,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(19,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(41,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(43,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(55,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(71,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(76,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(83,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(90,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(93,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(102,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(105,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(134,16): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(136,24): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(148,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(150,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(158,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(160,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(168,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(170,22): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(281,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(285,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(290,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(295,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(308,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(313,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(318,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(323,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(358,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(363,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(368,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(373,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(409,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(430,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(440,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(470,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(478,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(483,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(489,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(496,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(498,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(505,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(507,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(514,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(516,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(524,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(530,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(536,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(542,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(548,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(550,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(558,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(560,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(568,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(570,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(584,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(589,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(594,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(599,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(604,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(606,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(614,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(616,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(624,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(626,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(634,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(636,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(644,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(646,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(655,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(657,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(692,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(697,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(702,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(707,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(722,9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(723,9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(726,50): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(727,50): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(731,49): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(731,53): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(732,49): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(732,53): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(737,51): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(737,55): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(738,51): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(738,55): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+D:\Applications\Tep9\TepLab9\TepLab9\RandomSetter.h(40,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(676): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void RandomSetter::SetRandomTransportCost<Supplier*>(const std::vector<Supplier *,std::allocator<Supplier *>>,const std::vector<Supplier *,std::allocator<Supplier *>>,CRandom &)” funkcji szablon
+D:\Applications\Tep9\TepLab9\TepLab9\RandomSetter.h(42,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\RandomSetter.h(51,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+D:\Applications\Tep9\TepLab9\TepLab9\CMscnProblem.cpp(686): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void RandomSetter::SetRandomMinMax<Supplier*>(const std::vector<Supplier *,std::allocator<Supplier *>>,const std::vector<Supplier *,std::allocator<Supplier *>>,CRandom &)” funkcji szablon
+D:\Applications\Tep9\TepLab9\TepLab9\RandomSetter.h(53,21): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   TepLab9.vcxproj -> D:\Applications\Tep9\TepLab9\Debug\TepLab9.exe

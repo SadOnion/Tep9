@@ -171,9 +171,12 @@
   <ItemGroup>
     <ClInclude Include="CDiffEvol.h" />
     <ClInclude Include="CMscnProblem.h" />
+    <ClInclude Include="CProblem.h" />
     <ClInclude Include="CRandom.h" />
     <ClInclude Include="CRandomSearch.h" />
     <ClInclude Include="Individual.h" />
+    <ClInclude Include="IOptimizer.h" />
+    <ClInclude Include="ISolution.h" />
     <ClInclude Include="Population.h" />
     <ClInclude Include="RandomSetter.h" />
     <ClInclude Include="Shop.h" />

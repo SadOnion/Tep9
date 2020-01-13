@@ -2,14 +2,19 @@
 #include "CMscnProblem.h"
 #include "Individual.h"
 #include "Population.h"
-class CDiffEvol
+#include "IOptimizer.h"
+class CDiffEvol : public IOptimizer
 {
 private:
 	const float DEFAULT_DIFF_WEIGHT = 0.5;
 	const float DEFAULT_CROSS_PROBABILITY = 0.5;
+	const float DEFAULT_TIME = 1;
+	const float DEFAULT_POPULATION_SIZE = 100;
 
+	IProblem* problem;
 	float diffWeight;
-	CMscnProblem problem;
+	float timeInSec;
+	int populationSize;
 	int geneSize;
 	float crossProbability;
 	CRandom rand;
@@ -22,9 +27,10 @@ private:
 	bool CorrectGeneValue(double newVal,int index);
 	double Fitness(Individual& individual);
 public:
-	CDiffEvol(CMscnProblem& prob,float crossProb);
-	void SetNewProblem(CMscnProblem& prob){problem.Take(prob);geneSize=problem.CorrectSolutionSize();}
-	Solution Search(double timeInSec, int populationSize);
+	CDiffEvol(IProblem* prob,float crossProb,float diffWeight,int populationSize,float timeInSec);
 	double GetQuality(){return quality;}
+
+	// Odziedziczono za poœrednictwem elementu IOptimizer
+    ISolution* Search() override;
 };
 

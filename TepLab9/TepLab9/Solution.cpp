@@ -31,6 +31,16 @@ Solution::Solution(Vector4& sizes)
 	solution = new double[size];
 }
 
+Solution::Solution(double* sol, int size)
+{
+	solution = new double[size];
+	for (int i = 0; i < size; i++)
+	{
+		solution[i] = sol[i];
+	}
+	this->size=size;
+}
+
 
 void Solution::Set(int index, double resourceOrdered)
 {
